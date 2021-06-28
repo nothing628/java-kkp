@@ -6,6 +6,9 @@
 
 package com.kkp.myapp.views;
 
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author titan
@@ -34,7 +37,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
         imagePanel1 = new com.kkp.myapp.views.controls.ImagePanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -50,7 +53,7 @@ public class MainMenu extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menuClose = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistem Administrasi Calon Karyawan PT Aseanindo Networks Solutions");
@@ -97,10 +100,15 @@ public class MainMenu extends javax.swing.JFrame {
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/logout.png"))); // NOI18N
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.setLabel("Keluar");
-        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/logout.png"))); // NOI18N
+        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClose.setLabel("Keluar");
+        btnClose.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout imagePanel1Layout = new javax.swing.GroupLayout(imagePanel1);
         imagePanel1.setLayout(imagePanel1Layout);
@@ -155,8 +163,13 @@ public class MainMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Tutup");
-        jMenuBar1.add(jMenu4);
+        menuClose.setText("Tutup");
+        menuClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuCloseMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(menuClose);
 
         setJMenuBar(jMenuBar1);
 
@@ -186,7 +199,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,16 +221,34 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void closeApplication() {
+        var confirm = JOptionPane.showConfirmDialog(this, "Anda yakin ingin menutup Aplikasi?", "Tutup Aplikasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        // 0 - Yes
+        if (confirm == 0) {
+            this.setVisible(false);
+            this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        }
+    }
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        closeApplication();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void menuCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuCloseMouseClicked
+        closeApplication();
+    }//GEN-LAST:event_menuCloseMouseClicked
 
     /**
      * @param args the command line arguments
@@ -255,6 +286,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
     private com.kkp.myapp.views.controls.ImagePanel imagePanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -263,11 +295,9 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -279,6 +309,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu menuClose;
     // End of variables declaration//GEN-END:variables
 
 }
