@@ -15,6 +15,10 @@ public class DBConnector {
     public static MongoCollection<Document> rejectCollection;
     public static MongoCollection<Document> userCollection;
     public static MongoClient client;
+    
+    static {
+        openConnection();
+    }
 
     public static void closeConnection() {
         if (client != null) {

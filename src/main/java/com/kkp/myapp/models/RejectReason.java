@@ -16,7 +16,6 @@ public final class RejectReason extends BaseModel {
     public String code;
     public String title;
     public String description;
-    public MongoCollection<Document> myCollection;
 
     public RejectReason() {
         this.myCollection = DBConnector.rejectCollection;
@@ -27,7 +26,7 @@ public final class RejectReason extends BaseModel {
     }
     
     @Override
-    protected void refreshSelf() {
+    public void load() {
         try (MongoCursor<Document> findResult = this.myCollection.find(eq("_id", this.getKey())).limit(1).iterator()) {
             if (findResult.hasNext()) {
                 Document result = findResult.next();
@@ -45,7 +44,7 @@ public final class RejectReason extends BaseModel {
         Bson updateData = combine(set("title", this.title), set("description", this.description));
 
         this.myCollection.updateOne(eq("_id", this.getKey()), updateData);
-        this.refreshSelf();
+        this.load();
     }
 
     @Override
@@ -68,7 +67,7 @@ public final class RejectReason extends BaseModel {
         if (insertId != null && insertId.isObjectId()) {
             var val = insertId.asObjectId().getValue();
             this._id = val.toHexString();
-            this.refreshSelf();
+            this.load();
         }
     }
 }

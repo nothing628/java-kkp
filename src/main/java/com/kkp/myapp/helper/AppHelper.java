@@ -13,7 +13,7 @@ import java.net.URL;
  * @author titan
  */
 public class AppHelper {
-    
+
     public static URL loadResource(String path) {
         return AppHelper.class.getResource(path);
     }
@@ -25,6 +25,10 @@ public class AppHelper {
     }
 
     public static boolean verifyPassowrd(String password, String hash) {
+        if (hash.length() == 0) {
+            return false;
+        }
+
         var verifyer = BCrypt.verifyer();
         var result = verifyer.verify(password.toCharArray(), hash.toCharArray());
 

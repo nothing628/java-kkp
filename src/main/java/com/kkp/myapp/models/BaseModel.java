@@ -5,13 +5,22 @@
  */
 package com.kkp.myapp.models;
 
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
+
 /**
  *
  * @author titan
  */
 public abstract class BaseModel {
-    protected abstract void refreshSelf();
-    abstract void update();
-    abstract void delete();
-    abstract void save();
+
+    public MongoCollection<Document> myCollection;
+
+    public abstract void update();
+
+    public abstract void delete();
+
+    public abstract void save();
+
+    public abstract void load();
 }
