@@ -9,12 +9,12 @@ package com.kkp.myapp.views.master;
  *
  * @author titan
  */
-public class MasterKlien extends javax.swing.JFrame {
+public class DetailKlien extends javax.swing.JFrame {
 
     /**
      * Creates new form MasterKlien
      */
-    public MasterKlien() {
+    public DetailKlien() {
         initComponents();
     }
 
@@ -56,7 +56,7 @@ public class MasterKlien extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Master Klien");
+        setTitle("Informasi Klien");
 
         jLabel1.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 18)); // NOI18N
         jLabel1.setText("Informasi Klien");
@@ -99,7 +99,6 @@ public class MasterKlien extends javax.swing.JFrame {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/edit_file.png"))); // NOI18N
         jButton4.setText("Ubah");
         jButton4.setToolTipText("");
-        jButton4.setActionCommand("Ubah");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -385,8 +384,6 @@ public class MasterKlien extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.getAccessibleContext().setAccessibleName("Informasi Klien");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -407,20 +404,21 @@ public class MasterKlien extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MasterKlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailKlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MasterKlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailKlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MasterKlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailKlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MasterKlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailKlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MasterKlien().setVisible(true);
+                new DetailKlien().setVisible(true);
             }
         });
     }
