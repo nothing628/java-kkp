@@ -22,14 +22,23 @@ public class ImagePanel extends JPanel {
     private BufferedImage image;
 
     public ImagePanel() {
+        this.loadImage("/com/kkp/myapp/assets/bg.jpg");
+    }
+    
+    private void loadImage(String filename) {
         try {
-            URL path = AppHelper.loadResource("/com/kkp/myapp/assets/bg.jpg");
+            URL path = AppHelper.loadResource(filename);
             image = ImageIO.read(path);
         } catch (IOException ex) {
             // handle exception...
         } catch (Exception ex) {
             // handle exception...
         }
+    }
+    
+    public void setImage(String path) {
+        this.loadImage(path);
+        this.invalidate();
     }
 
     @Override
