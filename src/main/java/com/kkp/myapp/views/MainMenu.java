@@ -7,6 +7,7 @@
 package com.kkp.myapp.views;
 
 import com.kkp.myapp.views.form.FormInputKandidat;
+import com.kkp.myapp.views.form.FormPenerimaanKandidat;
 import com.kkp.myapp.views.form.FormPengaturan;
 import com.kkp.myapp.views.form.FormPenilaianInterview;
 import com.kkp.myapp.views.form.FormPermintaanManpower;
@@ -396,7 +397,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInterviewActionPerformed
 
     private void btnPenerimaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaanActionPerformed
-        // TODO add your handling code here:
+        showPenerimaanKandidat();
     }//GEN-LAST:event_btnPenerimaanActionPerformed
 
     private void btnSysUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSysUsersActionPerformed
@@ -440,7 +441,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuPenilaianInterviewActionPerformed
 
     private void menuPernerimaanKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPernerimaanKandidatActionPerformed
-        // TODO add your handling code here:
+        showPenerimaanKandidat();
     }//GEN-LAST:event_menuPernerimaanKandidatActionPerformed
 
     private void showFormPengaturan() {
@@ -485,6 +486,11 @@ public class MainMenu extends javax.swing.JFrame {
     
     private void showInputPenilaian() {
         FormPenilaianInterview frm = new FormPenilaianInterview();
+        frm.setVisible(true);
+    }
+    
+    private void showPenerimaanKandidat() {
+        FormPenerimaanKandidat frm = new FormPenerimaanKandidat();
         frm.setVisible(true);
     }
     

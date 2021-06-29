@@ -5,11 +5,6 @@ import com.kkp.myapp.models.DBConnector;
 import com.kkp.myapp.views.Login;
 import com.kkp.myapp.views.MainMenu;
 import com.kkp.myapp.views.form.FormPengaturan;
-import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class App {
 
