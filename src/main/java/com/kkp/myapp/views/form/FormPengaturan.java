@@ -5,6 +5,7 @@
  */
 package com.kkp.myapp.views.form;
 
+import com.kkp.myapp.Configuration;
 import com.kkp.myapp.models.DBConnectionInfo;
 import com.kkp.myapp.models.DBConnector;
 import java.awt.event.WindowEvent;
@@ -49,6 +50,11 @@ public class FormPengaturan extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pengaturan");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 18)); // NOI18N
         jLabel1.setText("Pengaturan Aplikasi");
@@ -167,9 +173,39 @@ public class FormPengaturan extends javax.swing.JFrame {
         btnClose.setEnabled(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        loadConfiguration();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void loadConfiguration() {
+        var config = Configuration.current;
+
+        txtHost.setText(config.getHost());
+        txtPort.setValue(config.getPort());
+        txtDBName.setText(config.getDbName());
+        txtUser.setText(config.getUser());
+        txtPassword.setText(config.getPassword());
+    }
+
     private void saveConfiguration() {
         try {
             testConfiguration();
+
+            char[] password = txtPassword.getPassword();
+            String password_str = new StringBuilder().append(password).toString();
+
+            Configuration.current.setDbName(txtDBName.getText());
+            Configuration.current.setHost(txtHost.getText());
+            Configuration.current.setPort((int) txtPort.getValue());
+            Configuration.current.setPassword(password_str);
+            Configuration.current.setUser(txtUser.getText());
+            Configuration.current.setIsInstalled(true);
+            Configuration.current.Save();
+
+            JOptionPane.showMessageDialog(this,
+                    "Berhasil menyimpan pengaturan, harap tutup aplikasi dan buka kembali",
+                    "Berhasil menyimpan",
+                    JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this,
                     ex.getMessage(),
@@ -186,7 +222,7 @@ public class FormPengaturan extends javax.swing.JFrame {
 
             connInfo.setHost(txtHost.getText());
             connInfo.setDbName(txtDBName.getText());
-            connInfo.setPort((int)txtPort.getValue());
+            connInfo.setPort((int) txtPort.getValue());
             connInfo.setUser(txtUser.getText());
             connInfo.setPassword(password_str);
 
@@ -203,7 +239,7 @@ public class FormPengaturan extends javax.swing.JFrame {
 
     private void confirmCloseApplication() {
         var confirm = JOptionPane.showConfirmDialog(this,
-                "Anda yakin ingin menutup Aplikasi?",
+                "Anda yakin ingin menutup pengaturan?",
                 "Tutup Aplikasi",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);

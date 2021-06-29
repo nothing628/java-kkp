@@ -14,16 +14,7 @@ public class App {
             return;
         }
 
-        String host = Configuration.current.getHost();
-        
-        System.out.println("Test");
-        System.out.println(host);
-        
-        Configuration.current.setHost("localhost");
-        Configuration.current.setPort(27017);
-        Configuration.current.setUser("kkp");
-        Configuration.current.setPassword("secret");
-        Configuration.current.Save();
+        System.out.println("Mulai aplikasi");
         
         DBConnector.closeConnection();
     }
