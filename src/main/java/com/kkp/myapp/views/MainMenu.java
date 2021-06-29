@@ -6,6 +6,7 @@
 
 package com.kkp.myapp.views;
 
+import com.kkp.myapp.views.form.FormPengaturan;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
@@ -41,20 +42,20 @@ public class MainMenu extends javax.swing.JFrame {
         imagePanel1 = new com.kkp.myapp.views.controls.ImagePanel();
         btnSysUsers1 = new javax.swing.JButton();
         btnLaporan1 = new javax.swing.JButton();
-        btnInterview1 = new javax.swing.JButton();
+        btnPenerimaan = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        menuPengguna = new javax.swing.JMenuItem();
+        menuKandidat = new javax.swing.JMenuItem();
+        menuMasterKlien = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        menuPermintaanManpower = new javax.swing.JMenuItem();
+        menuInputKandidat = new javax.swing.JMenuItem();
+        menuPenilaianInterview = new javax.swing.JMenuItem();
+        menuPernerimaanKandidat = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        laporanInterview = new javax.swing.JMenuItem();
+        laporanKandidat = new javax.swing.JMenuItem();
         menuClose = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,21 +67,41 @@ public class MainMenu extends javax.swing.JFrame {
         btnMasterKlien.setText("Master Klien");
         btnMasterKlien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMasterKlien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMasterKlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterKlienActionPerformed(evt);
+            }
+        });
 
         btnMasterKandidat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cabinet48.png"))); // NOI18N
         btnMasterKandidat.setText("Master Kandidat");
         btnMasterKandidat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMasterKandidat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMasterKandidat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterKandidatActionPerformed(evt);
+            }
+        });
 
         btnLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/chart48.png"))); // NOI18N
         btnLaporan.setText("Laporan Interview");
         btnLaporan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLaporan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLaporan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaporanActionPerformed(evt);
+            }
+        });
 
         btnFormPermintaanKlien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/documents48.png"))); // NOI18N
         btnFormPermintaanKlien.setText("<html>\n<center>Form <br /> Permintaan Klien</center></html>");
         btnFormPermintaanKlien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFormPermintaanKlien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnFormPermintaanKlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFormPermintaanKlienActionPerformed(evt);
+            }
+        });
 
         btnFormInputKandidat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/documents48.png"))); // NOI18N
         btnFormInputKandidat.setText("<html><center>Form<br />Input Kandidat</center></html>");
@@ -96,11 +117,21 @@ public class MainMenu extends javax.swing.JFrame {
         btnSysUsers.setText("Pengguna Sistem");
         btnSysUsers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSysUsers.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSysUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSysUsersActionPerformed(evt);
+            }
+        });
 
         btnInterview.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/checklist48.png"))); // NOI18N
         btnInterview.setText("<html>\n<center>Interview<br>Kandidat</center></html>");
         btnInterview.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInterview.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnInterview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInterviewActionPerformed(evt);
+            }
+        });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/logout48.png"))); // NOI18N
         btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -127,53 +158,83 @@ public class MainMenu extends javax.swing.JFrame {
         btnSysUsers1.setText("Pengaturan");
         btnSysUsers1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSysUsers1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSysUsers1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSysUsers1ActionPerformed(evt);
+            }
+        });
 
         btnLaporan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/chart48.png"))); // NOI18N
         btnLaporan1.setText("Laporan Kandidat");
         btnLaporan1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLaporan1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLaporan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaporan1ActionPerformed(evt);
+            }
+        });
 
-        btnInterview1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/checklist48.png"))); // NOI18N
-        btnInterview1.setText("<html>\n<center>Status<br/>Penerimaan <br/>Kandidat</center></html>");
-        btnInterview1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnInterview1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPenerimaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/checklist48.png"))); // NOI18N
+        btnPenerimaan.setText("<html>\n<center>Status<br/>Penerimaan <br/>Kandidat</center></html>");
+        btnPenerimaan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPenerimaan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPenerimaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenerimaanActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Master");
 
-        jMenuItem1.setText("Master Pengguna");
-        jMenu1.add(jMenuItem1);
+        menuPengguna.setText("Master Pengguna");
+        menuPengguna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPenggunaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuPengguna);
 
-        jMenuItem2.setText("Master Kandidat");
-        jMenu1.add(jMenuItem2);
+        menuKandidat.setText("Master Kandidat");
+        menuKandidat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuKandidatActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuKandidat);
 
-        jMenuItem9.setText("Master Klien");
-        jMenu1.add(jMenuItem9);
+        menuMasterKlien.setText("Master Klien");
+        jMenu1.add(menuMasterKlien);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Form");
 
-        jMenuItem4.setText("Form Permintaan Manpower");
-        jMenu2.add(jMenuItem4);
+        menuPermintaanManpower.setText("Form Permintaan Manpower");
+        jMenu2.add(menuPermintaanManpower);
 
-        jMenuItem7.setText("Form Input Kandidat");
-        jMenu2.add(jMenuItem7);
+        menuInputKandidat.setText("Form Input Kandidat");
+        jMenu2.add(menuInputKandidat);
 
-        jMenuItem8.setText("Form Penilaian Interview");
-        jMenu2.add(jMenuItem8);
+        menuPenilaianInterview.setText("Form Penilaian Interview");
+        jMenu2.add(menuPenilaianInterview);
 
-        jMenuItem11.setText("Form Penerimaan Kandidat");
-        jMenu2.add(jMenuItem11);
+        menuPernerimaanKandidat.setText("Form Penerimaan Kandidat");
+        jMenu2.add(menuPernerimaanKandidat);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Laporan");
 
-        jMenuItem10.setText("Laporan Interview");
-        jMenu3.add(jMenuItem10);
+        laporanInterview.setText("Laporan Interview");
+        jMenu3.add(laporanInterview);
 
-        jMenuItem5.setText("Laporan Kandidat");
-        jMenu3.add(jMenuItem5);
+        laporanKandidat.setText("Laporan Kandidat");
+        laporanKandidat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                laporanKandidatActionPerformed(evt);
+            }
+        });
+        jMenu3.add(laporanKandidat);
 
         jMenuBar1.add(jMenu3);
 
@@ -207,7 +268,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnInterview, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnInterview1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPenerimaan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnMasterKlien, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -237,7 +298,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnInterview, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                     .addComponent(btnFormInputKandidat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(btnInterview1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(btnPenerimaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                     .addComponent(btnFormPermintaanKlien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,6 +333,58 @@ public class MainMenu extends javax.swing.JFrame {
         closeApplication();
     }//GEN-LAST:event_menuCloseMouseClicked
 
+    private void btnMasterKlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasterKlienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMasterKlienActionPerformed
+
+    private void btnMasterKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasterKandidatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMasterKandidatActionPerformed
+
+    private void btnLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLaporanActionPerformed
+
+    private void btnLaporan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporan1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLaporan1ActionPerformed
+
+    private void btnFormPermintaanKlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormPermintaanKlienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFormPermintaanKlienActionPerformed
+
+    private void btnInterviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterviewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInterviewActionPerformed
+
+    private void btnPenerimaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPenerimaanActionPerformed
+
+    private void btnSysUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSysUsersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSysUsersActionPerformed
+
+    private void btnSysUsers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSysUsers1ActionPerformed
+        showFormPengaturan();
+    }//GEN-LAST:event_btnSysUsers1ActionPerformed
+
+    private void menuPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPenggunaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuPenggunaActionPerformed
+
+    private void menuKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuKandidatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuKandidatActionPerformed
+
+    private void laporanKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laporanKandidatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_laporanKandidatActionPerformed
+
+    private void showFormPengaturan() {
+        FormPengaturan frm = new FormPengaturan();
+        frm.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -312,11 +425,11 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnFormInputKandidat;
     private javax.swing.JButton btnFormPermintaanKlien;
     private javax.swing.JButton btnInterview;
-    private javax.swing.JButton btnInterview1;
     private javax.swing.JButton btnLaporan;
     private javax.swing.JButton btnLaporan1;
     private javax.swing.JButton btnMasterKandidat;
     private javax.swing.JButton btnMasterKlien;
+    private javax.swing.JButton btnPenerimaan;
     private javax.swing.JButton btnSysUsers;
     private javax.swing.JButton btnSysUsers1;
     private com.kkp.myapp.views.controls.ImagePanel imagePanel1;
@@ -324,16 +437,16 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem laporanInterview;
+    private javax.swing.JMenuItem laporanKandidat;
     private javax.swing.JMenu menuClose;
+    private javax.swing.JMenuItem menuInputKandidat;
+    private javax.swing.JMenuItem menuKandidat;
+    private javax.swing.JMenuItem menuMasterKlien;
+    private javax.swing.JMenuItem menuPengguna;
+    private javax.swing.JMenuItem menuPenilaianInterview;
+    private javax.swing.JMenuItem menuPermintaanManpower;
+    private javax.swing.JMenuItem menuPernerimaanKandidat;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author titan
  */
-public class FormPengaturan extends javax.swing.JFrame {
+public class FormPengaturan extends javax.swing.JDialog {
 
     /**
      * Creates new form FormPengaturan
@@ -49,6 +49,7 @@ public class FormPengaturan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pengaturan");
+        setModal(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -191,21 +192,36 @@ public class FormPengaturan extends javax.swing.JFrame {
         try {
             testConfiguration();
 
+            var config = Configuration.current;
             char[] password = txtPassword.getPassword();
             String password_str = new StringBuilder().append(password).toString();
 
-            Configuration.current.setDbName(txtDBName.getText());
-            Configuration.current.setHost(txtHost.getText());
-            Configuration.current.setPort((int) txtPort.getValue());
-            Configuration.current.setPassword(password_str);
-            Configuration.current.setUser(txtUser.getText());
-            Configuration.current.setIsInstalled(true);
-            Configuration.current.Save();
+            config.setDbName(txtDBName.getText());
+            config.setHost(txtHost.getText());
+            config.setPort((int) txtPort.getValue());
+            config.setPassword(password_str);
+            config.setUser(txtUser.getText());
+            config.setIsInstalled(true);
+            config.Save();
+
+            seedUser();
 
             JOptionPane.showMessageDialog(this,
                     "Berhasil menyimpan pengaturan, harap tutup aplikasi dan buka kembali",
                     "Berhasil menyimpan",
                     JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                    ex.getMessage(),
+                    "Oops, ada kesalahan",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void seedUser() {
+        try {
+            DBConnector.openConnection();
+            DBConnector.seedUsers();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this,
                     ex.getMessage(),

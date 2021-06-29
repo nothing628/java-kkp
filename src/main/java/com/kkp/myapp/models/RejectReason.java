@@ -12,7 +12,7 @@ import org.bson.types.ObjectId;
 
 public final class RejectReason extends BaseModel {
     protected Document _original;
-    protected String _id;
+    protected ObjectId id;
     public String code;
     public String title;
     public String description;
@@ -22,7 +22,7 @@ public final class RejectReason extends BaseModel {
     }
 
     public ObjectId getKey() {
-        return new ObjectId(this._id);
+        return id;
     }
     
     @Override
@@ -50,7 +50,7 @@ public final class RejectReason extends BaseModel {
     @Override
     public void delete() {
         this.myCollection.deleteOne(eq("_id", this.getKey()));
-        this._id = "";
+        this.id = null;
         this._original = null;
     }
 
@@ -66,7 +66,7 @@ public final class RejectReason extends BaseModel {
         
         if (insertId != null && insertId.isObjectId()) {
             var val = insertId.asObjectId().getValue();
-            this._id = val.toHexString();
+            this.id = val;
             this.load();
         }
     }

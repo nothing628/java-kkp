@@ -9,17 +9,23 @@
             <Property name="text" type="java.lang.String" value="Master"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="menuPengguna">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Master Pengguna"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuPenggunaActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="menuKandidat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Master Kandidat"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuKandidatActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+            <MenuItem class="javax.swing.JMenuItem" name="menuMasterKlien">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Master Klien"/>
               </Properties>
@@ -31,22 +37,22 @@
             <Property name="text" type="java.lang.String" value="Form"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="menuPermintaanManpower">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Form Permintaan Manpower"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+            <MenuItem class="javax.swing.JMenuItem" name="menuInputKandidat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Form Input Kandidat"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="menuPenilaianInterview">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Form Penilaian Interview"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+            <MenuItem class="javax.swing.JMenuItem" name="menuPernerimaanKandidat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Form Penerimaan Kandidat"/>
               </Properties>
@@ -58,15 +64,18 @@
             <Property name="text" type="java.lang.String" value="Laporan"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
+            <MenuItem class="javax.swing.JMenuItem" name="laporanInterview">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Laporan Interview"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="laporanKandidat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Laporan Kandidat"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="laporanKandidatActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -124,7 +133,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnInterview" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnInterview1" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="btnPenerimaan" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnMasterKlien" min="-2" pref="140" max="-2" attributes="0"/>
@@ -161,7 +170,7 @@
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="btnInterview" alignment="0" pref="140" max="32767" attributes="0"/>
                   <Component id="btnFormInputKandidat" alignment="0" pref="140" max="32767" attributes="0"/>
-                  <Component id="btnInterview1" alignment="0" pref="140" max="32767" attributes="0"/>
+                  <Component id="btnPenerimaan" alignment="0" pref="140" max="32767" attributes="0"/>
                   <Component id="btnFormPermintaanKlien" alignment="0" pref="140" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -185,6 +194,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMasterKlienActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnMasterKandidat">
       <Properties>
@@ -195,6 +207,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMasterKandidatActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnLaporan">
       <Properties>
@@ -205,6 +220,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaporanActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFormPermintaanKlien">
       <Properties>
@@ -215,6 +233,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFormPermintaanKlienActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFormInputKandidat">
       <Properties>
@@ -238,6 +259,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSysUsersActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnInterview">
       <Properties>
@@ -248,6 +272,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterviewActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnClose">
       <Properties>
@@ -286,6 +313,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSysUsers1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnLaporan1">
       <Properties>
@@ -296,8 +326,11 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaporan1ActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnInterview1">
+    <Component class="javax.swing.JButton" name="btnPenerimaan">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/com/kkp/myapp/assets/checklist48.png"/>
@@ -306,6 +339,9 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPenerimaanActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

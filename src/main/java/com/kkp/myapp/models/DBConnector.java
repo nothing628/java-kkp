@@ -1,6 +1,7 @@
 package com.kkp.myapp.models;
 
 import com.kkp.myapp.Configuration;
+import com.kkp.myapp.enums.UserLevel;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -70,6 +71,17 @@ public class DBConnector {
         }
     }
 
+    public static void seedUsers() {
+        Users user = new Users();
+        
+        user.setUsername("admin");
+        user.setEmail("admin@admin.com");
+        user.setPasswordHash("12345678");
+        user.setIsActive(true);
+        user.setLevel(UserLevel.Administrator);
+        user.save();
+    }
+    
     protected static void checkAndCreateIndex() {
         DBConnector.rejectCollection.createIndex(Indexes.ascending("code"), new IndexOptions().unique(true).name("code_1"));
         DBConnector.userCollection.createIndex(Indexes.ascending("email"), new IndexOptions().unique(true).name("email_1"));

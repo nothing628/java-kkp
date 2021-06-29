@@ -11,7 +11,7 @@ public enum UserLevel {
         this.levelName = level;
     }
 
-    String getLevel() {
+    public String getLevel() {
         return this.levelName;
     }
 }
