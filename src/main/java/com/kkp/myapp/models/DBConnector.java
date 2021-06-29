@@ -15,7 +15,7 @@ public class DBConnector {
     public static MongoCollection<Document> rejectCollection;
     public static MongoCollection<Document> userCollection;
     public static MongoClient client;
-    
+
     static {
         openConnection();
     }
@@ -27,18 +27,51 @@ public class DBConnector {
     }
 
     public static void openConnection() {
+        DBConnectionInfo connInfo = new DBConnectionInfo();
+        
+        connInfo.setHost("localhost");
+        connInfo.setPort(27002);
+        connInfo.setUser("kkpuser");
+        connInfo.setPassword("secret");
+        connInfo.setDbName("kkp");
+        
+        ConnectionString conn = connInfo.getConnectionString();
         MongoClientSettings settings = MongoClientSettings.builder()
-                
-                .applyConnectionString(new ConnectionString("mongodb://kkpuser:secret@localhost:27002"))
+                .applyConnectionString(conn)
                 .build();
         MongoClient mongoClient = MongoClients.create(settings);
-        MongoDatabase database = mongoClient.getDatabase("kkp");
+        MongoDatabase database = mongoClient.getDatabase(connInfo.getDbName());
 
         DBConnector.client = mongoClient;
         DBConnector.rejectCollection = database.getCollection("reject_reason");
         DBConnector.userCollection = database.getCollection("users");
 
         DBConnector.checkAndCreateIndex();
+    }
+
+    public static void testConnection(DBConnectionInfo connInfo) {
+        ConnectionString conn = connInfo.getConnectionString();
+
+        try {
+            try (MongoClient mongoClient = MongoClients.create(conn)) {
+                var db_names = mongoClient.listDatabaseNames().iterator();
+                while (db_names.hasNext()) {
+                    String dbname = db_names.next();
+                    
+                    System.out.println(dbname);
+                }
+                
+                var database = mongoClient.getDatabase(connInfo.getDbName());
+                var coll_names = database.listCollectionNames().iterator();
+                while (coll_names.hasNext()) {
+                    String col_name = coll_names.next();
+                    
+                    System.out.println(col_name);
+                }
+            }
+        } catch (Exception ex) {
+            throw ex;
+        }
     }
 
     protected static void checkAndCreateIndex() {
