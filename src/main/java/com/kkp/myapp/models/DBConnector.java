@@ -1,5 +1,6 @@
 package com.kkp.myapp.models;
 
+import com.kkp.myapp.Configuration;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -16,10 +17,6 @@ public class DBConnector {
     public static MongoCollection<Document> userCollection;
     public static MongoClient client;
 
-    static {
-        openConnection();
-    }
-
     public static void closeConnection() {
         if (client != null) {
             client.close();
@@ -27,26 +24,25 @@ public class DBConnector {
     }
 
     public static void openConnection() {
-        DBConnectionInfo connInfo = new DBConnectionInfo();
-        
-        connInfo.setHost("localhost");
-        connInfo.setPort(27002);
-        connInfo.setUser("kkpuser");
-        connInfo.setPassword("secret");
-        connInfo.setDbName("kkp");
-        
+        var config = Configuration.current;
+        DBConnectionInfo connInfo = config.toConnectionInfo();
         ConnectionString conn = connInfo.getConnectionString();
         MongoClientSettings settings = MongoClientSettings.builder()
                 .applyConnectionString(conn)
                 .build();
-        MongoClient mongoClient = MongoClients.create(settings);
-        MongoDatabase database = mongoClient.getDatabase(connInfo.getDbName());
 
-        DBConnector.client = mongoClient;
-        DBConnector.rejectCollection = database.getCollection("reject_reason");
-        DBConnector.userCollection = database.getCollection("users");
+        try {
+            MongoClient mongoClient = MongoClients.create(settings);
+            MongoDatabase database = mongoClient.getDatabase(connInfo.getDbName());
 
-        DBConnector.checkAndCreateIndex();
+            DBConnector.client = mongoClient;
+            DBConnector.rejectCollection = database.getCollection("reject_reason");
+            DBConnector.userCollection = database.getCollection("users");
+
+            DBConnector.checkAndCreateIndex();
+        } catch (Exception ex) {
+            throw ex;
+        }
     }
 
     public static void testConnection(DBConnectionInfo connInfo) {
@@ -57,15 +53,15 @@ public class DBConnector {
                 var db_names = mongoClient.listDatabaseNames().iterator();
                 while (db_names.hasNext()) {
                     String dbname = db_names.next();
-                    
+
                     System.out.println(dbname);
                 }
-                
+
                 var database = mongoClient.getDatabase(connInfo.getDbName());
                 var coll_names = database.listCollectionNames().iterator();
                 while (coll_names.hasNext()) {
                     String col_name = coll_names.next();
-                    
+
                     System.out.println(col_name);
                 }
             }

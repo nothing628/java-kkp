@@ -14,6 +14,8 @@ public class App {
             return;
         }
 
+        DBConnector.openConnection();
+        
         System.out.println("Mulai aplikasi");
         
         DBConnector.closeConnection();

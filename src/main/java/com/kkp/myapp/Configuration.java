@@ -1,6 +1,7 @@
 package com.kkp.myapp;
 
 import com.google.gson.Gson;
+import com.kkp.myapp.models.DBConnectionInfo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -32,6 +33,7 @@ public final class Configuration {
 
         if (content == null) {
             content = new Configuration();
+            content.seedConfig();
         }
 
         return content;
@@ -50,7 +52,7 @@ public final class Configuration {
     public void setDbName(String dbname) {
         this.dbName = dbname;
     }
-    
+
     public void setPort(int port) {
         dbPort = port;
     }
@@ -78,7 +80,7 @@ public final class Configuration {
     public String getDbName() {
         return dbName;
     }
-    
+
     public int getPort() {
         return dbPort;
     }
@@ -120,6 +122,14 @@ public final class Configuration {
         return builder.toString();
     }
 
+    private void seedConfig() {
+        dbHost = "localhost";
+        dbPort = 27017;
+        dbName = "";
+        dbUser = "";
+        dbPassword = "";
+    }
+
     private Configuration fromJson(String content) {
         Gson gson = new Gson();
 
@@ -132,5 +142,17 @@ public final class Configuration {
         Gson gson = new Gson();
 
         return gson.toJson(this);
+    }
+
+    public DBConnectionInfo toConnectionInfo() {
+        DBConnectionInfo connInfo = new DBConnectionInfo();
+
+        connInfo.setHost(dbHost);
+        connInfo.setPort(dbPort);
+        connInfo.setUser(dbUser);
+        connInfo.setPassword(dbPassword);
+        connInfo.setDbName(dbName);
+
+        return connInfo;
     }
 }
