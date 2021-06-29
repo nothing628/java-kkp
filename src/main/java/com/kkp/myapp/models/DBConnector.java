@@ -18,6 +18,13 @@ public class DBConnector {
     public static MongoCollection<Document> klienCollection;
     public static MongoCollection<Document> userCollection;
     public static MongoClient client;
+    
+    // Use this only for development reason
+//    static {
+//        if (DBConnector.client == null) {
+//            openConnection();
+//        }
+//    }
 
     public static void closeConnection() {
         if (client != null) {
@@ -85,6 +92,7 @@ public class DBConnector {
     }
     
     protected static void checkAndCreateIndex() {
+        DBConnector.klienCollection.createIndex(Indexes.text("nama"), new IndexOptions().name("nama_1"));
         DBConnector.klienCollection.createIndex(Indexes.ascending("kode"), new IndexOptions().unique(true).name("kode_1"));
         DBConnector.rejectCollection.createIndex(Indexes.ascending("code"), new IndexOptions().unique(true).name("code_1"));
         DBConnector.userCollection.createIndex(Indexes.ascending("email"), new IndexOptions().unique(true).name("email_1"));

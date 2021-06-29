@@ -1,20 +1,27 @@
 package com.kkp.myapp.views.master;
 
+import com.kkp.myapp.models.DBConnector;
 import com.kkp.myapp.views.events.DataActionType;
 import com.kkp.myapp.views.events.DataEventListener;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import org.bson.Document;
 
 public class TabelKlien extends javax.swing.JPanel {
 
+    private MongoCollection<Document> myCollection;
     private final List<DataEventListener> listeners = new ArrayList<>();
     TableModel t_model;
 
     public TabelKlien() {
         initComponents();
         createTableModel();
+        
+        myCollection = DBConnector.klienCollection;
     }
     
     public void addListener(DataEventListener toAdd) {
@@ -49,7 +56,7 @@ public class TabelKlien extends javax.swing.JPanel {
         new_model.addColumn("Nama Perusahaan");
         new_model.addColumn("Telp");
         new_model.addColumn("Email");
-        new_model.addColumn("");
+        new_model.addColumn("Aktif");
 
         this.t_model = new_model;
         this.tblData.setModel(new_model);
@@ -229,14 +236,37 @@ public class TabelKlien extends javax.swing.JPanel {
         ExportTable();
     }//GEN-LAST:event_btnExportActionPerformed
 
-    public void RefreshTable() {
+    private ArrayList<Object[]> getData() {
         String keyword = txtKeyword.getText();
+        var is_keyword_empty = keyword.length() == 0;
+        var iterator = myCollection.find(!is_keyword_empty ? Filters.text(keyword) : new Document()).iterator();
+        ArrayList<Object[]> result = new ArrayList();
+        
+        while(iterator.hasNext()) {
+            Document doc = iterator.next();
+            ArrayList row = new ArrayList();
+            
+            row.add(doc.getString("kode"));
+            row.add(doc.getString("nama"));
+            row.add(doc.getString("no_telepon"));
+            row.add(doc.getString("email"));
+            row.add(doc.getBoolean("is_active") ? "Ya" : "Tidak");
+            
+            result.add(row.toArray());
+        }
+        
+        return result;
+    }
+    
+    public void RefreshTable() {
         ClearTable();
 
         DefaultTableModel t_m = (DefaultTableModel) this.t_model;
-
-        t_m.addRow(new Object[]{1, 2, 3, 4});
-        t_m.addRow(new Object[]{1, 2, 3, 4});
+        var data = getData();
+        
+        data.forEach((Object[] row) -> {
+            t_m.addRow(row);
+        });
     }
 
     private void ClearTable() {

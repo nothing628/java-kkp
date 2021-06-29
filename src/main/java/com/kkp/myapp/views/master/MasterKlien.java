@@ -23,6 +23,9 @@ public class MasterKlien extends javax.swing.JFrame {
         tabelKlien1.addListener((DataActionType action, Object data) -> {
             this.ProcessData(action, data);
         });
+        formKlien1.addListener((DataActionType action, Object data) -> {
+            this.ProcessData(action, data);
+        });
     }
     
     private void ProcessData(DataActionType action, Object data) {
@@ -36,6 +39,7 @@ public class MasterKlien extends javax.swing.JFrame {
             case DELETE:
                 confirmDeleteData(data);
                 break;
+            case LIST:
             case CANCEL_CREATE:
             case CANCEL_UPDATE:
                 showTable();
@@ -63,11 +67,13 @@ public class MasterKlien extends javax.swing.JFrame {
     
     private void showTable() {
         jTabbedPane1.setSelectedIndex(0);
+        tabelKlien1.RefreshTable();
     }
     
     private void showFormCreate() {
         jTabbedPane1.setSelectedIndex(1);
         formKlien1.setTitle("Tambah Klien");
+        formKlien1.setCurrentData(null);
     }
     
     private void showFormEdit(Object current_data) {
