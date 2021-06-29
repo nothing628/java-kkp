@@ -39,20 +39,22 @@ public class MainMenu extends javax.swing.JFrame {
         btnInterview = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         imagePanel1 = new com.kkp.myapp.views.controls.ImagePanel();
+        btnSysUsers1 = new javax.swing.JButton();
+        btnLaporan1 = new javax.swing.JButton();
+        btnInterview1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         menuClose = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,28 +62,28 @@ public class MainMenu extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
 
-        btnMasterKlien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cabinet.png"))); // NOI18N
-        btnMasterKlien.setText("Data Klien");
+        btnMasterKlien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cabinet48.png"))); // NOI18N
+        btnMasterKlien.setText("Master Klien");
         btnMasterKlien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMasterKlien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        btnMasterKandidat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cabinet.png"))); // NOI18N
-        btnMasterKandidat.setText("Data Kandidat");
+        btnMasterKandidat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cabinet48.png"))); // NOI18N
+        btnMasterKandidat.setText("Master Kandidat");
         btnMasterKandidat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnMasterKandidat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        btnLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/chart.png"))); // NOI18N
-        btnLaporan.setText("Laporan");
+        btnLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/chart48.png"))); // NOI18N
+        btnLaporan.setText("Laporan Interview");
         btnLaporan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLaporan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        btnFormPermintaanKlien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/documents.png"))); // NOI18N
-        btnFormPermintaanKlien.setText("Form Permintaan Klien");
+        btnFormPermintaanKlien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/documents48.png"))); // NOI18N
+        btnFormPermintaanKlien.setText("<html>\n<center>Form <br /> Permintaan Klien</center></html>");
         btnFormPermintaanKlien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFormPermintaanKlien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        btnFormInputKandidat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/documents.png"))); // NOI18N
-        btnFormInputKandidat.setText("Form Input Kandidat");
+        btnFormInputKandidat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/documents48.png"))); // NOI18N
+        btnFormInputKandidat.setText("<html><center>Form<br />Input Kandidat</center></html>");
         btnFormInputKandidat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFormInputKandidat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnFormInputKandidat.addActionListener(new java.awt.event.ActionListener() {
@@ -90,17 +92,17 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        btnSysUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/users.png"))); // NOI18N
+        btnSysUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/users48.png"))); // NOI18N
         btnSysUsers.setText("Pengguna Sistem");
         btnSysUsers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSysUsers.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        btnInterview.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/checklist.png"))); // NOI18N
-        btnInterview.setText("Interview Kandidat");
+        btnInterview.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/checklist48.png"))); // NOI18N
+        btnInterview.setText("<html>\n<center>Interview<br>Kandidat</center></html>");
         btnInterview.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInterview.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/logout.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/logout48.png"))); // NOI18N
         btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnClose.setLabel("Keluar");
         btnClose.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -121,45 +123,57 @@ public class MainMenu extends javax.swing.JFrame {
             .addGap(0, 58, Short.MAX_VALUE)
         );
 
+        btnSysUsers1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/setting48.png"))); // NOI18N
+        btnSysUsers1.setText("Pengaturan");
+        btnSysUsers1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSysUsers1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        btnLaporan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/chart48.png"))); // NOI18N
+        btnLaporan1.setText("Laporan Kandidat");
+        btnLaporan1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLaporan1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        btnInterview1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/checklist48.png"))); // NOI18N
+        btnInterview1.setText("<html>\n<center>Status<br/>Penerimaan <br/>Kandidat</center></html>");
+        btnInterview1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInterview1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         jMenu1.setText("Master");
 
         jMenuItem1.setText("Master Pengguna");
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Master Alasan Pemberhentian");
+        jMenuItem2.setText("Master Kandidat");
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setText("Master Alasan Penolakan");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem9.setText("Master Posisi Pekerjaan");
+        jMenuItem9.setText("Master Klien");
         jMenu1.add(jMenuItem9);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Form");
 
-        jMenuItem4.setText("Form Input Data Calon Karyawan");
+        jMenuItem4.setText("Form Permintaan Manpower");
         jMenu2.add(jMenuItem4);
 
-        jMenuItem7.setText("Form Penerimaan Calon Karyawan");
+        jMenuItem7.setText("Form Input Kandidat");
         jMenu2.add(jMenuItem7);
 
-        jMenuItem8.setText("Form Penghentian Karyawan");
+        jMenuItem8.setText("Form Penilaian Interview");
         jMenu2.add(jMenuItem8);
+
+        jMenuItem11.setText("Form Penerimaan Kandidat");
+        jMenu2.add(jMenuItem11);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Laporan");
 
-        jMenuItem10.setText("Laporan Data Karyawan");
+        jMenuItem10.setText("Laporan Interview");
         jMenu3.add(jMenuItem10);
 
-        jMenuItem5.setText("Laporan Penerimaan Calon Karyawan");
+        jMenuItem5.setText("Laporan Kandidat");
         jMenu3.add(jMenuItem5);
-
-        jMenuItem6.setText("Laporan Pemberhentian Karyawan");
-        jMenu3.add(jMenuItem6);
 
         jMenuBar1.add(jMenu3);
 
@@ -178,29 +192,35 @@ public class MainMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnMasterKlien, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSysUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnMasterKandidat, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSysUsers1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnFormInputKandidat, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnFormInputKandidat, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnFormPermintaanKlien, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnFormPermintaanKlien, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnInterview, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnInterview, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnInterview1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSysUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMasterKlien, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnMasterKandidat, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLaporan1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,18 +231,20 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMasterKlien, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMasterKandidat, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLaporan1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnFormInputKandidat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnFormPermintaanKlien, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnInterview, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnFormPermintaanKlien, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInterview, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFormInputKandidat, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInterview1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSysUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSysUsers1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -290,10 +312,13 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnFormInputKandidat;
     private javax.swing.JButton btnFormPermintaanKlien;
     private javax.swing.JButton btnInterview;
+    private javax.swing.JButton btnInterview1;
     private javax.swing.JButton btnLaporan;
+    private javax.swing.JButton btnLaporan1;
     private javax.swing.JButton btnMasterKandidat;
     private javax.swing.JButton btnMasterKlien;
     private javax.swing.JButton btnSysUsers;
+    private javax.swing.JButton btnSysUsers1;
     private com.kkp.myapp.views.controls.ImagePanel imagePanel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -301,11 +326,10 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;

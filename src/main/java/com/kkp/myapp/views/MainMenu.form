@@ -16,17 +16,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Master Alasan Pemberhentian"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Master Alasan Penolakan"/>
+                <Property name="text" type="java.lang.String" value="Master Kandidat"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Master Posisi Pekerjaan"/>
+                <Property name="text" type="java.lang.String" value="Master Klien"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -38,17 +33,22 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Form Input Data Calon Karyawan"/>
+                <Property name="text" type="java.lang.String" value="Form Permintaan Manpower"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Form Penerimaan Calon Karyawan"/>
+                <Property name="text" type="java.lang.String" value="Form Input Kandidat"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Form Penghentian Karyawan"/>
+                <Property name="text" type="java.lang.String" value="Form Penilaian Interview"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Form Penerimaan Kandidat"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -60,17 +60,12 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Laporan Data Karyawan"/>
+                <Property name="text" type="java.lang.String" value="Laporan Interview"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Laporan Penerimaan Calon Karyawan"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Laporan Pemberhentian Karyawan"/>
+                <Property name="text" type="java.lang.String" value="Laporan Kandidat"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -113,34 +108,40 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="imagePanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnMasterKlien" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="btnSysUsers" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnMasterKandidat" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="btnSysUsers1" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnLaporan" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="btnClose" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnFormInputKandidat" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="btnFormInputKandidat" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnFormPermintaanKlien" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="btnFormPermintaanKlien" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnInterview" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="btnInterview" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnInterview1" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnSysUsers" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="btnMasterKlien" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnClose" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="btnMasterKandidat" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnLaporan" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnLaporan1" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="imagePanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -154,21 +155,22 @@
                   <Component id="btnMasterKlien" min="-2" pref="140" max="-2" attributes="0"/>
                   <Component id="btnMasterKandidat" min="-2" pref="140" max="-2" attributes="0"/>
                   <Component id="btnLaporan" min="-2" pref="140" max="-2" attributes="0"/>
+                  <Component id="btnLaporan1" min="-2" pref="140" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnFormInputKandidat" max="32767" attributes="0"/>
-                      <Component id="btnFormPermintaanKlien" min="-2" pref="140" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="btnInterview" min="-2" pref="140" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="btnFormPermintaanKlien" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnInterview" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnFormInputKandidat" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnInterview1" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnSysUsers" min="-2" pref="140" max="-2" attributes="0"/>
                   <Component id="btnClose" min="-2" pref="140" max="-2" attributes="0"/>
+                  <Component id="btnSysUsers1" min="-2" pref="140" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -177,9 +179,9 @@
     <Component class="javax.swing.JButton" name="btnMasterKlien">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/kkp/myapp/assets/cabinet.png"/>
+          <Image iconType="3" name="/com/kkp/myapp/assets/cabinet48.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Data Klien"/>
+        <Property name="text" type="java.lang.String" value="Master Klien"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -187,9 +189,9 @@
     <Component class="javax.swing.JButton" name="btnMasterKandidat">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/kkp/myapp/assets/cabinet.png"/>
+          <Image iconType="3" name="/com/kkp/myapp/assets/cabinet48.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Data Kandidat"/>
+        <Property name="text" type="java.lang.String" value="Master Kandidat"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -197,9 +199,9 @@
     <Component class="javax.swing.JButton" name="btnLaporan">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/kkp/myapp/assets/chart.png"/>
+          <Image iconType="3" name="/com/kkp/myapp/assets/chart48.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Laporan"/>
+        <Property name="text" type="java.lang.String" value="Laporan Interview"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -207,9 +209,9 @@
     <Component class="javax.swing.JButton" name="btnFormPermintaanKlien">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/kkp/myapp/assets/documents.png"/>
+          <Image iconType="3" name="/com/kkp/myapp/assets/documents48.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Form Permintaan Klien"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;center&gt;Form &lt;br /&gt; Permintaan Klien&lt;/center&gt;&lt;/html&gt;"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -217,9 +219,9 @@
     <Component class="javax.swing.JButton" name="btnFormInputKandidat">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/kkp/myapp/assets/documents.png"/>
+          <Image iconType="3" name="/com/kkp/myapp/assets/documents48.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Form Input Kandidat"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Form&lt;br /&gt;Input Kandidat&lt;/center&gt;&lt;/html&gt;"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -230,7 +232,7 @@
     <Component class="javax.swing.JButton" name="btnSysUsers">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/kkp/myapp/assets/users.png"/>
+          <Image iconType="3" name="/com/kkp/myapp/assets/users48.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Pengguna Sistem"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -240,9 +242,9 @@
     <Component class="javax.swing.JButton" name="btnInterview">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/kkp/myapp/assets/checklist.png"/>
+          <Image iconType="3" name="/com/kkp/myapp/assets/checklist48.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Interview Kandidat"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;center&gt;Interview&lt;br&gt;Kandidat&lt;/center&gt;&lt;/html&gt;"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
@@ -250,7 +252,7 @@
     <Component class="javax.swing.JButton" name="btnClose">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/kkp/myapp/assets/logout.png"/>
+          <Image iconType="3" name="/com/kkp/myapp/assets/logout48.png"/>
         </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="label" type="java.lang.String" value="Keluar"/>
@@ -275,5 +277,35 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Component class="javax.swing.JButton" name="btnSysUsers1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/kkp/myapp/assets/setting48.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Pengaturan"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="verticalTextPosition" type="int" value="3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLaporan1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/kkp/myapp/assets/chart48.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Laporan Kandidat"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="verticalTextPosition" type="int" value="3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnInterview1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/kkp/myapp/assets/checklist48.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;center&gt;Status&lt;br/&gt;Penerimaan &lt;br/&gt;Kandidat&lt;/center&gt;&lt;/html&gt;"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="verticalTextPosition" type="int" value="3"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
