@@ -5,8 +5,8 @@
  */
 package com.kkp.myapp.views.master;
 
-import javax.swing.table.TableModel;
-import javax.swing.table.DefaultTableModel;
+import com.kkp.myapp.views.events.DataEventListener;
+
 
 /**
  *
@@ -14,26 +14,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MasterKlien extends javax.swing.JFrame {
 
-    TableModel t_model;
     /**
      * Creates new form MasterKandidat
      */
     public MasterKlien() {
         initComponents();
-        createTableModel();
-        
+        tabelKlien1.addListener((String action, Object data) -> {
+            this.ProcessData(action, data);
+        });
     }
     
-    private void createTableModel() {
-        DefaultTableModel new_model = new DefaultTableModel();
-        new_model.addColumn("Kode");
-        new_model.addColumn("Nama Perusahaan");
-        new_model.addColumn("Telp");
-        new_model.addColumn("Email");
-        new_model.addColumn("");
-        
-        this.t_model = new_model;
-        this.tblData.setModel(new_model);
+    private void ProcessData(String action, Object data) {
+        switch (action) {
+            case "New":
+                
+                break;
+        }
     }
 
     /**
@@ -45,16 +41,9 @@ public class MasterKlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        btnCari = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblData = new javax.swing.JTable();
-        btnExport = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        txtKeyword = new javax.swing.JTextField();
-        btnNew = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabelKlien1 = new com.kkp.myapp.views.master.TabelKlien();
+        formKlien1 = new com.kkp.myapp.views.master.FormKlien();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Master Klien");
@@ -64,79 +53,9 @@ public class MasterKlien extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Kata Kunci");
-
-        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/search_file.png"))); // NOI18N
-        btnCari.setText("Cari");
-        btnCari.setToolTipText("");
-        btnCari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCariActionPerformed(evt);
-            }
-        });
-
-        tblData.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(tblData);
-
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/download_file.png"))); // NOI18N
-        btnExport.setText("Export");
-        btnExport.setToolTipText("");
-        btnExport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 18)); // NOI18N
-        jLabel4.setText("Daftar Klien");
-
-        txtKeyword.setToolTipText("");
-
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/file.png"))); // NOI18N
-        btnNew.setText("Tambah");
-        btnNew.setToolTipText("");
-        btnNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewActionPerformed(evt);
-            }
-        });
-
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/edit_file.png"))); // NOI18N
-        btnEdit.setText("Edit");
-        btnEdit.setToolTipText("");
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
-            }
-        });
-
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/delete_file.png"))); // NOI18N
-        btnDelete.setText("Hapus");
-        btnDelete.setToolTipText("");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
+        jTabbedPane1.setEnabled(false);
+        jTabbedPane1.addTab("Tabel", tabelKlien1);
+        jTabbedPane1.addTab("Form", formKlien1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,102 +63,26 @@ public class MasterKlien extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(69, 69, 69)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 161, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnExport)
-                            .addComponent(btnCari)
-                            .addComponent(btnNew)
-                            .addComponent(btnEdit)
-                            .addComponent(btnDelete))
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jTabbedPane1.getAccessibleContext().setAccessibleName("Form");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        RefreshTable();
+        tabelKlien1.RefreshTable();
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-        RefreshTable();
-    }//GEN-LAST:event_btnCariActionPerformed
-
-    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-        ExportTable();
-    }//GEN-LAST:event_btnExportActionPerformed
-
-    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        int row_idx = tblData.getSelectedRow();
-        
-        System.out.println(row_idx);
-    }//GEN-LAST:event_btnNewActionPerformed
-
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void RefreshTable() {
-        String keyword = txtKeyword.getText();
-        ClearTable();
-        
-        
-        DefaultTableModel t_m = (DefaultTableModel) this.t_model;
-        
-        t_m.addRow(new Object[] {1,2,3,4});
-        t_m.addRow(new Object[] {1,2,3,4});
-    }
-    
-    private void ClearTable() {
-        DefaultTableModel t_m = (DefaultTableModel) this.t_model;
-        t_m.setNumRows(0);
-    }
-    
-    private void ExportTable() {
-        
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -277,15 +120,8 @@ public class MasterKlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCari;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnExport;
-    private javax.swing.JButton btnNew;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblData;
-    private javax.swing.JTextField txtKeyword;
+    private com.kkp.myapp.views.master.FormKlien formKlien1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private com.kkp.myapp.views.master.TabelKlien tabelKlien1;
     // End of variables declaration//GEN-END:variables
 }
