@@ -6,7 +6,15 @@
 
 package com.kkp.myapp.views;
 
+import com.kkp.myapp.views.form.FormInputKandidat;
 import com.kkp.myapp.views.form.FormPengaturan;
+import com.kkp.myapp.views.form.FormPenilaianInterview;
+import com.kkp.myapp.views.form.FormPermintaanManpower;
+import com.kkp.myapp.views.master.MasterKandidat;
+import com.kkp.myapp.views.master.MasterKlien;
+import com.kkp.myapp.views.master.MasterUser;
+import com.kkp.myapp.views.report.ReportEmployee;
+import com.kkp.myapp.views.report.ReportInterview;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
@@ -33,7 +41,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         btnMasterKlien = new javax.swing.JButton();
         btnMasterKandidat = new javax.swing.JButton();
-        btnLaporan = new javax.swing.JButton();
+        btnLaporanInterview = new javax.swing.JButton();
         btnFormPermintaanKlien = new javax.swing.JButton();
         btnFormInputKandidat = new javax.swing.JButton();
         btnSysUsers = new javax.swing.JButton();
@@ -41,7 +49,7 @@ public class MainMenu extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
         imagePanel1 = new com.kkp.myapp.views.controls.ImagePanel();
         btnSysUsers1 = new javax.swing.JButton();
-        btnLaporan1 = new javax.swing.JButton();
+        btnLaporanKandidat = new javax.swing.JButton();
         btnPenerimaan = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -83,13 +91,13 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        btnLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/chart48.png"))); // NOI18N
-        btnLaporan.setText("Laporan Interview");
-        btnLaporan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnLaporan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnLaporan.addActionListener(new java.awt.event.ActionListener() {
+        btnLaporanInterview.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/chart48.png"))); // NOI18N
+        btnLaporanInterview.setText("Laporan Interview");
+        btnLaporanInterview.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLaporanInterview.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLaporanInterview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLaporanActionPerformed(evt);
+                btnLaporanInterviewActionPerformed(evt);
             }
         });
 
@@ -164,13 +172,13 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        btnLaporan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/chart48.png"))); // NOI18N
-        btnLaporan1.setText("Laporan Kandidat");
-        btnLaporan1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnLaporan1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnLaporan1.addActionListener(new java.awt.event.ActionListener() {
+        btnLaporanKandidat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/chart48.png"))); // NOI18N
+        btnLaporanKandidat.setText("Laporan Kandidat");
+        btnLaporanKandidat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLaporanKandidat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLaporanKandidat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLaporan1ActionPerformed(evt);
+                btnLaporanKandidatActionPerformed(evt);
             }
         });
 
@@ -203,6 +211,11 @@ public class MainMenu extends javax.swing.JFrame {
         jMenu1.add(menuKandidat);
 
         menuMasterKlien.setText("Master Klien");
+        menuMasterKlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuMasterKlienActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuMasterKlien);
 
         jMenuBar1.add(jMenu1);
@@ -210,15 +223,35 @@ public class MainMenu extends javax.swing.JFrame {
         jMenu2.setText("Form");
 
         menuPermintaanManpower.setText("Form Permintaan Manpower");
+        menuPermintaanManpower.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPermintaanManpowerActionPerformed(evt);
+            }
+        });
         jMenu2.add(menuPermintaanManpower);
 
         menuInputKandidat.setText("Form Input Kandidat");
+        menuInputKandidat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInputKandidatActionPerformed(evt);
+            }
+        });
         jMenu2.add(menuInputKandidat);
 
         menuPenilaianInterview.setText("Form Penilaian Interview");
+        menuPenilaianInterview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPenilaianInterviewActionPerformed(evt);
+            }
+        });
         jMenu2.add(menuPenilaianInterview);
 
         menuPernerimaanKandidat.setText("Form Penerimaan Kandidat");
+        menuPernerimaanKandidat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPernerimaanKandidatActionPerformed(evt);
+            }
+        });
         jMenu2.add(menuPernerimaanKandidat);
 
         jMenuBar1.add(jMenu2);
@@ -226,6 +259,11 @@ public class MainMenu extends javax.swing.JFrame {
         jMenu3.setText("Laporan");
 
         laporanInterview.setText("Laporan Interview");
+        laporanInterview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                laporanInterviewActionPerformed(evt);
+            }
+        });
         jMenu3.add(laporanInterview);
 
         laporanKandidat.setText("Laporan Kandidat");
@@ -274,9 +312,9 @@ public class MainMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnMasterKandidat, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLaporanInterview, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLaporan1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLaporanKandidat, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -292,8 +330,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMasterKlien, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMasterKandidat, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLaporan1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLaporanInterview, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLaporanKandidat, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnInterview, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
@@ -322,7 +360,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
     
     private void btnFormInputKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormInputKandidatActionPerformed
-        // TODO add your handling code here:
+        showInputKandidat();
     }//GEN-LAST:event_btnFormInputKandidatActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -334,27 +372,27 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCloseMouseClicked
 
     private void btnMasterKlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasterKlienActionPerformed
-        // TODO add your handling code here:
+        showMasterKlien();
     }//GEN-LAST:event_btnMasterKlienActionPerformed
 
     private void btnMasterKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasterKandidatActionPerformed
-        // TODO add your handling code here:
+        showMasterKandidat();
     }//GEN-LAST:event_btnMasterKandidatActionPerformed
 
-    private void btnLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLaporanActionPerformed
+    private void btnLaporanInterviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporanInterviewActionPerformed
+        showLaporanInterview();
+    }//GEN-LAST:event_btnLaporanInterviewActionPerformed
 
-    private void btnLaporan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporan1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLaporan1ActionPerformed
+    private void btnLaporanKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporanKandidatActionPerformed
+        showLaporanKandidat();
+    }//GEN-LAST:event_btnLaporanKandidatActionPerformed
 
     private void btnFormPermintaanKlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormPermintaanKlienActionPerformed
-        // TODO add your handling code here:
+        showInputManpower();
     }//GEN-LAST:event_btnFormPermintaanKlienActionPerformed
 
     private void btnInterviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterviewActionPerformed
-        // TODO add your handling code here:
+        showInputPenilaian();
     }//GEN-LAST:event_btnInterviewActionPerformed
 
     private void btnPenerimaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaanActionPerformed
@@ -362,7 +400,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPenerimaanActionPerformed
 
     private void btnSysUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSysUsersActionPerformed
-        // TODO add your handling code here:
+        showMasterUser();
     }//GEN-LAST:event_btnSysUsersActionPerformed
 
     private void btnSysUsers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSysUsers1ActionPerformed
@@ -370,21 +408,86 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSysUsers1ActionPerformed
 
     private void menuPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPenggunaActionPerformed
-        // TODO add your handling code here:
+        showMasterUser();
     }//GEN-LAST:event_menuPenggunaActionPerformed
 
     private void menuKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuKandidatActionPerformed
-        // TODO add your handling code here:
+        showMasterKandidat();
     }//GEN-LAST:event_menuKandidatActionPerformed
 
     private void laporanKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laporanKandidatActionPerformed
-        // TODO add your handling code here:
+        showLaporanKandidat();
     }//GEN-LAST:event_laporanKandidatActionPerformed
+
+    private void laporanInterviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laporanInterviewActionPerformed
+        showLaporanInterview();
+    }//GEN-LAST:event_laporanInterviewActionPerformed
+
+    private void menuMasterKlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMasterKlienActionPerformed
+        showMasterKlien();
+    }//GEN-LAST:event_menuMasterKlienActionPerformed
+
+    private void menuPermintaanManpowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPermintaanManpowerActionPerformed
+        showInputManpower();
+    }//GEN-LAST:event_menuPermintaanManpowerActionPerformed
+
+    private void menuInputKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInputKandidatActionPerformed
+        showInputKandidat();
+    }//GEN-LAST:event_menuInputKandidatActionPerformed
+
+    private void menuPenilaianInterviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPenilaianInterviewActionPerformed
+        showInputPenilaian();
+    }//GEN-LAST:event_menuPenilaianInterviewActionPerformed
+
+    private void menuPernerimaanKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPernerimaanKandidatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuPernerimaanKandidatActionPerformed
 
     private void showFormPengaturan() {
         FormPengaturan frm = new FormPengaturan();
         frm.setVisible(true);
     }
+    
+    private void showLaporanKandidat() {
+        ReportEmployee frm = new ReportEmployee();
+        frm.setVisible(true);
+    }
+    
+    private void showLaporanInterview() {
+        ReportInterview frm = new ReportInterview();
+        frm.setVisible(true);
+    }
+    
+    private void showMasterKandidat() {
+        MasterKandidat frm = new MasterKandidat();
+        frm.setVisible(true);
+    }
+    
+    private void showMasterKlien() {
+       MasterKlien frm = new MasterKlien();
+       frm.setVisible(true);
+    }
+    
+    private void showMasterUser() {
+        MasterUser frm = new MasterUser();
+        frm.setVisible(true);
+    }
+    
+    private void showInputKandidat() {
+        FormInputKandidat frm = new FormInputKandidat();
+        frm.setVisible(true);
+    }
+    
+    private void showInputManpower() {
+        FormPermintaanManpower frm = new FormPermintaanManpower();
+        frm.setVisible(true);
+    }
+    
+    private void showInputPenilaian() {
+        FormPenilaianInterview frm = new FormPenilaianInterview();
+        frm.setVisible(true);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -413,10 +516,8 @@ public class MainMenu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenu().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainMenu().setVisible(true);
         });
     }
 
@@ -425,8 +526,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnFormInputKandidat;
     private javax.swing.JButton btnFormPermintaanKlien;
     private javax.swing.JButton btnInterview;
-    private javax.swing.JButton btnLaporan;
-    private javax.swing.JButton btnLaporan1;
+    private javax.swing.JButton btnLaporanInterview;
+    private javax.swing.JButton btnLaporanKandidat;
     private javax.swing.JButton btnMasterKandidat;
     private javax.swing.JButton btnMasterKlien;
     private javax.swing.JButton btnPenerimaan;

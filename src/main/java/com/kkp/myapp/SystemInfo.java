@@ -9,5 +9,8 @@ public class SystemInfo {
     public static String javafxVersion() {
         return System.getProperty("javafx.version");
     }
-
+    
+    public static String applicationName() {
+        return "Sistem Administrasi Calon Karyawan PT Aseanindo Networks Solutions";
+    }
 }

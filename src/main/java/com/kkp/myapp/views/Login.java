@@ -1,5 +1,6 @@
 package com.kkp.myapp.views;
 
+import com.kkp.myapp.SystemInfo;
 import com.kkp.myapp.exceptions.AuthenticationException;
 import com.kkp.myapp.helper.AuthHelper;
 import java.awt.event.WindowEvent;
@@ -138,7 +139,11 @@ public class Login extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Ooops, ada kesalahan", JOptionPane.ERROR_MESSAGE);
         } finally {
             if (AuthHelper.isLoggedIn()) {
-                JOptionPane.showMessageDialog(this, "Selamat datang di Aplikasi", "Berhasil Login", JOptionPane.INFORMATION_MESSAGE);
+                String app_name = SystemInfo.applicationName();
+                JOptionPane.showMessageDialog(this,
+                        "Selamat datang di " + app_name,
+                        "Berhasil Login",
+                        JOptionPane.INFORMATION_MESSAGE);
                 closeForm();
             }
         }
