@@ -40,8 +40,8 @@ public class FormKlien extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
         jCheckBox1 = new javax.swing.JCheckBox();
         btnNew = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        btnCancel = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
 
         jLabel2.setText("Kode Perusahaan");
 
@@ -77,17 +77,17 @@ public class FormKlien extends javax.swing.JPanel {
             }
         });
 
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cancel.png"))); // NOI18N
-        btnEdit.setText("Batal");
-        btnEdit.setToolTipText("");
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cancel.png"))); // NOI18N
+        btnCancel.setText("Batal");
+        btnCancel.setToolTipText("");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 18)); // NOI18N
-        jLabel7.setText("Tambah Klien");
+        lblTitle.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 18)); // NOI18N
+        lblTitle.setText("Tambah Klien");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -113,20 +113,20 @@ public class FormKlien extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
-                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jCheckBox1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(jLabel7)
+                .addComponent(lblTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel7)
+                .addComponent(lblTitle)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
@@ -154,7 +154,7 @@ public class FormKlien extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNew)
-                    .addComponent(btnEdit))
+                    .addComponent(btnCancel))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -163,13 +163,20 @@ public class FormKlien extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnNewActionPerformed
 
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        
+    }//GEN-LAST:event_btnCancelActionPerformed
 
+    public void setTitle(String title) {
+        lblTitle.setText(title);
+    }
+    
+    public void setCurrentData(Object data) {
+        //
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnNew;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel2;
@@ -177,12 +184,12 @@ public class FormKlien extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,15 +27,15 @@
                               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnCari" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <Component id="btnCari" min="-2" pref="115" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="btnNew" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <Component id="btnNew" min="-2" pref="115" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                      <Component id="btnEdit" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <Component id="btnEdit" min="-2" pref="115" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="btnDelete" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <Component id="btnDelete" min="-2" pref="115" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="btnExport" min="-2" pref="114" max="-2" attributes="0"/>
+                                      <Component id="btnExport" min="-2" pref="115" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="txtKeyword" alignment="0" min="-2" pref="334" max="-2" attributes="0"/>
                               </Group>
@@ -116,6 +116,9 @@
         <Property name="text" type="java.lang.String" value="Cari"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="115"/>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariActionPerformed"/>
       </Events>
@@ -128,6 +131,9 @@
         <Property name="text" type="java.lang.String" value="Tambah"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="115"/>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewActionPerformed"/>
       </Events>
@@ -140,6 +146,9 @@
         <Property name="text" type="java.lang.String" value="Edit"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="115"/>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
       </Events>
@@ -152,6 +161,9 @@
         <Property name="text" type="java.lang.String" value="Hapus"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="115"/>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
       </Events>
@@ -164,6 +176,9 @@
         <Property name="text" type="java.lang.String" value="Export"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="115"/>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportActionPerformed"/>
       </Events>

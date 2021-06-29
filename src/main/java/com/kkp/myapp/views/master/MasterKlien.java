@@ -5,7 +5,8 @@
  */
 package com.kkp.myapp.views.master;
 
-import com.kkp.myapp.views.events.DataEventListener;
+import com.kkp.myapp.views.events.DataActionType;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -19,17 +20,60 @@ public class MasterKlien extends javax.swing.JFrame {
      */
     public MasterKlien() {
         initComponents();
-        tabelKlien1.addListener((String action, Object data) -> {
+        tabelKlien1.addListener((DataActionType action, Object data) -> {
             this.ProcessData(action, data);
         });
     }
     
-    private void ProcessData(String action, Object data) {
+    private void ProcessData(DataActionType action, Object data) {
         switch (action) {
-            case "New":
-                
+            case CREATE:
+                showFormCreate();
+                break;
+            case UPDATE:
+                showFormEdit(data);
+                break;
+            case DELETE:
+                confirmDeleteData(data);
+                break;
+            case CANCEL_CREATE:
+            case CANCEL_UPDATE:
+                showTable();
                 break;
         }
+    }
+    
+    private void confirmDeleteData(Object data) {
+        var confirm = JOptionPane.showConfirmDialog(this,
+                "Anda yakin ingin menghapus Data?",
+                "Hapus data",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+        
+        // 0 - Yes
+        if (confirm == 0) {
+            deleteData(data);
+        }
+    }
+    
+    private void deleteData(Object data) {
+        //
+    }
+    
+    private void showTable() {
+        jTabbedPane1.setSelectedIndex(0);
+    }
+    
+    private void showFormCreate() {
+        jTabbedPane1.setSelectedIndex(1);
+        formKlien1.setTitle("Tambah Klien");
+    }
+    
+    private void showFormEdit(Object current_data) {
+        jTabbedPane1.setSelectedIndex(1);
+        formKlien1.setTitle("Edit Klien");
+        formKlien1.setCurrentData(current_data);
     }
 
     /**

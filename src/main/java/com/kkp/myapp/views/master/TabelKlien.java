@@ -1,5 +1,6 @@
 package com.kkp.myapp.views.master;
 
+import com.kkp.myapp.views.events.DataActionType;
 import com.kkp.myapp.views.events.DataEventListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import javax.swing.table.TableModel;
 
 public class TabelKlien extends javax.swing.JPanel {
 
-    private List<DataEventListener> listeners = new ArrayList<DataEventListener>();
+    private final List<DataEventListener> listeners = new ArrayList<>();
     TableModel t_model;
 
     public TabelKlien() {
@@ -20,9 +21,26 @@ public class TabelKlien extends javax.swing.JPanel {
         listeners.add(toAdd);
     }
     
-    private void dispatchDataEvent(String action, Object data) {
+    private void dispatchDataEvent(DataActionType action, Object data) {
         for (DataEventListener listener : listeners)
             listener.actionPerformed(action, data);
+    }
+    
+    private void getSelectedAndDispatch(DataActionType action) {
+        int row_idx = tblData.getSelectedRow();
+        boolean is_selected = row_idx > -1;
+        
+        if (is_selected) {
+            var val = new ArrayList();
+            
+            for (int i = 0; i < 4; i++) {
+                var col = t_model.getValueAt(row_idx, i);
+                
+                val.add(col);
+            }
+            
+            dispatchDataEvent(action, val);
+        }
     }
 
     private void createTableModel() {
@@ -146,15 +164,15 @@ public class TabelKlien extends javax.swing.JPanel {
                                 .addGap(69, 69, 69)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(12, 12, 12)
-                                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 43, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
@@ -183,6 +201,12 @@ public class TabelKlien extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        btnCari.getAccessibleContext().setAccessibleName("115");
+        btnNew.getAccessibleContext().setAccessibleName("115");
+        btnEdit.getAccessibleContext().setAccessibleName("115");
+        btnDelete.getAccessibleContext().setAccessibleName("115");
+        btnExport.getAccessibleContext().setAccessibleName("115");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
@@ -190,17 +214,15 @@ public class TabelKlien extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCariActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        int row_idx = tblData.getSelectedRow();
-
-        System.out.println(row_idx);
+         dispatchDataEvent(DataActionType.CREATE, null);
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+        getSelectedAndDispatch(DataActionType.UPDATE);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        getSelectedAndDispatch(DataActionType.DELETE);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
@@ -223,7 +245,7 @@ public class TabelKlien extends javax.swing.JPanel {
     }
 
     private void ExportTable() {
-
+        // Do Nothing
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

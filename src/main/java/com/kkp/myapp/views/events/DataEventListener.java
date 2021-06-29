@@ -8,5 +8,5 @@ package com.kkp.myapp.views.events;
 import java.util.EventListener;
 
 public interface DataEventListener extends EventListener{
-    public void actionPerformed(String action, Object data);
+    public void actionPerformed(DataActionType action, Object data);
 }
