@@ -1,5 +1,9 @@
 package com.kkp.myapp.models;
 
+import static com.mongodb.client.model.Filters.eq;
+import com.mongodb.client.model.UpdateOptions;
+import static com.mongodb.client.model.Updates.combine;
+import static com.mongodb.client.model.Updates.set;
 import org.bson.Document;
 
 public class Klien extends BaseModel {
@@ -63,6 +67,7 @@ public class Klien extends BaseModel {
         this.myCollection = DBConnector.klienCollection;
     }
 
+    @Override
     protected void fromDocument(Document document) {
         this.kode = document.getString("kode");
         this.email = document.getString("email");

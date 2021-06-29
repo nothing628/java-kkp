@@ -5,48 +5,66 @@ import com.kkp.myapp.views.events.DataActionType;
 import com.kkp.myapp.views.events.DataEventListener;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.bson.Document;
 
 public class TabelKlien extends javax.swing.JPanel {
 
-    private MongoCollection<Document> myCollection;
+    private final MongoCollection<Document> myCollection;
     private final List<DataEventListener> listeners = new ArrayList<>();
     TableModel t_model;
 
     public TabelKlien() {
         initComponents();
         createTableModel();
-        
+
         myCollection = DBConnector.klienCollection;
     }
-    
+
     public void addListener(DataEventListener toAdd) {
         listeners.add(toAdd);
     }
-    
+
     private void dispatchDataEvent(DataActionType action, Object data) {
-        for (DataEventListener listener : listeners)
+        for (DataEventListener listener : listeners) {
             listener.actionPerformed(action, data);
+        }
     }
-    
+
+    private Document getSelectedDocument(String kode) {
+        try {
+            Document queryResult = myCollection.find(eq("kode", kode)).first();
+
+            return queryResult;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                    ex.getMessage(),
+                    "Ooops, ada kesalahan",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return null;
+        }
+    }
+
     private void getSelectedAndDispatch(DataActionType action) {
         int row_idx = tblData.getSelectedRow();
         boolean is_selected = row_idx > -1;
-        
+
         if (is_selected) {
-            var val = new ArrayList();
-            
-            for (int i = 0; i < 4; i++) {
-                var col = t_model.getValueAt(row_idx, i);
-                
-                val.add(col);
+            String kode = (String) t_model.getValueAt(row_idx, 0);
+            var document = this.getSelectedDocument(kode);
+            var is_empty = document == null;
+
+            if (is_empty) {
+                return;
             }
-            
-            dispatchDataEvent(action, val);
+
+            dispatchDataEvent(action, document);
         }
     }
 
@@ -221,7 +239,7 @@ public class TabelKlien extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCariActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-         dispatchDataEvent(DataActionType.CREATE, null);
+        dispatchDataEvent(DataActionType.CREATE, null);
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
@@ -241,29 +259,29 @@ public class TabelKlien extends javax.swing.JPanel {
         var is_keyword_empty = keyword.length() == 0;
         var iterator = myCollection.find(!is_keyword_empty ? Filters.text(keyword) : new Document()).iterator();
         ArrayList<Object[]> result = new ArrayList();
-        
-        while(iterator.hasNext()) {
+
+        while (iterator.hasNext()) {
             Document doc = iterator.next();
             ArrayList row = new ArrayList();
-            
+
             row.add(doc.getString("kode"));
             row.add(doc.getString("nama"));
             row.add(doc.getString("no_telepon"));
             row.add(doc.getString("email"));
             row.add(doc.getBoolean("is_active") ? "Ya" : "Tidak");
-            
+
             result.add(row.toArray());
         }
-        
+
         return result;
     }
-    
+
     public void RefreshTable() {
         ClearTable();
 
         DefaultTableModel t_m = (DefaultTableModel) this.t_model;
         var data = getData();
-        
+
         data.forEach((Object[] row) -> {
             t_m.addRow(row);
         });

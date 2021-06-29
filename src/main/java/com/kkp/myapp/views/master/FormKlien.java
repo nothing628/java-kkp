@@ -8,10 +8,12 @@ import com.mongodb.client.MongoCollection;
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 public class FormKlien extends javax.swing.JPanel {
 
-    private MongoCollection<Document> myCollection;
+    private Document current;
+    private final MongoCollection<Document> myCollection;
     private final List<DataEventListener> listeners = new ArrayList<>();
 
     public FormKlien() {
@@ -172,7 +174,12 @@ public class FormKlien extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        saveKlien();
+        if (this.isEditMode()) {
+            updateKlien();
+        } else {
+            saveKlien();
+        }
+        
         dispatchDataEvent(DataActionType.LIST, null);
     }//GEN-LAST:event_btnNewActionPerformed
 
@@ -180,6 +187,24 @@ public class FormKlien extends javax.swing.JPanel {
         dispatchDataEvent(DataActionType.LIST, null);
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    private boolean isEditMode() {
+        return current != null;
+    }
+    
+    private void updateKlien() {
+        ObjectId current_id = current.getObjectId("_id");
+        
+        Klien newKlien = new Klien();
+        newKlien.setId(current_id);
+        newKlien.setKode(txtCode.getText());
+        newKlien.setNamaPerusahaan(txtName.getText());
+        newKlien.setNoTelepon(txtPhoneNumber.getText());
+        newKlien.setEmail(txtEmail.getText());
+        newKlien.setAlamat(txtAlamat.getText());
+        newKlien.setIsActive(cmbActive.isSelected());
+        newKlien.update();
+    }
+    
     private void saveKlien() {
         Klien newKlien = new Klien();
         newKlien.setKode(txtCode.getText());
@@ -200,11 +225,19 @@ public class FormKlien extends javax.swing.JPanel {
             this.clearForm();
             return;
         }
-        
-        Object[] data2 = (Object[])data;
+
+        current = (Document)data;
+        txtCode.setEnabled(false);
+        txtCode.setText(current.getString("kode"));
+        txtName.setText(current.getString("nama"));
+        txtPhoneNumber.setText(current.getString("no_telepon"));
+        txtEmail.setText(current.getString("email"));
+        txtAlamat.setText(current.getString("alamat"));
+        cmbActive.setSelected(current.getBoolean("is_active"));
     }
     
     private void clearForm() {
+        current = null;
         txtCode.setEnabled(true);
         txtCode.setText("");
         txtName.setText("");

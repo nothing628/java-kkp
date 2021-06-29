@@ -5,8 +5,11 @@
  */
 package com.kkp.myapp.views.master;
 
+import com.kkp.myapp.models.Klien;
 import com.kkp.myapp.views.events.DataActionType;
 import javax.swing.JOptionPane;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 
 
 /**
@@ -38,6 +41,7 @@ public class MasterKlien extends javax.swing.JFrame {
                 break;
             case DELETE:
                 confirmDeleteData(data);
+                tabelKlien1.RefreshTable();
                 break;
             case LIST:
             case CANCEL_CREATE:
@@ -62,7 +66,11 @@ public class MasterKlien extends javax.swing.JFrame {
     }
     
     private void deleteData(Object data) {
-        //
+        Document document = (Document) data;
+        ObjectId document_id = document.getObjectId("_id");
+        Klien newKlien = new Klien();
+        newKlien.setId(document_id);
+        newKlien.delete();
     }
     
     private void showTable() {
