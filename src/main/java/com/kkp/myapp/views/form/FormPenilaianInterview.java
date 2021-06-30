@@ -1,19 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.kkp.myapp.views.form;
 
-/**
- *
- * @author titan
- */
+import com.kkp.myapp.exceptions.InvalidInputException;
+import com.kkp.myapp.models.RequestManpower;
+import com.kkp.myapp.views.modals.ModalSearchKandidat;
+import com.kkp.myapp.views.modals.ModalSearchRequest;
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
+import org.bson.Document;
+
 public class FormPenilaianInterview extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DetailInterview
-     */
+    Document kandidat;
+    Document request;
+    
     public FormPenilaianInterview() {
         initComponents();
     }
@@ -68,12 +67,6 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
 
         txtKode.setEditable(false);
 
-        txtKTP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtKTPActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Kode Interview");
 
         jLabel3.setText("Nama Penilai");
@@ -86,6 +79,11 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
 
         btnCariKandidat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/search_file.png"))); // NOI18N
         btnCariKandidat.setText("Cari");
+        btnCariKandidat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariKandidatActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 18)); // NOI18N
         jLabel7.setText("Input Penilaian");
@@ -111,12 +109,27 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
 
         btnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cancel.png"))); // NOI18N
         btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
 
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/store_file.png"))); // NOI18N
         btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         btnCariRequest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/search_file.png"))); // NOI18N
         btnCariRequest.setText("Cari");
+        btnCariRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariRequestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,13 +255,110 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtKTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKTPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKTPActionPerformed
+    private void btnCariKandidatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariKandidatActionPerformed
+        showSearchKandidatDialog();
+    }//GEN-LAST:event_btnCariKandidatActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnCariRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariRequestActionPerformed
+        showSearchRequestDialog();
+    }//GEN-LAST:event_btnCariRequestActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        try {
+            saveDocument();
+            messageAndClose();
+        } catch (InvalidInputException ex) {
+            JOptionPane.showMessageDialog(this,
+                        ex.getMessage(),
+                        "Oops, ada kesalahan",
+                        JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        closeForm();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void showSearchKandidatDialog() {
+        ModalSearchKandidat dialog = new ModalSearchKandidat();
+        dialog.setVisible(true);
+        
+        if (dialog.isSelected()) {
+            Document doc = dialog.getDocument();
+            
+            setKandidat(doc);
+        }
+    }
+    
+    private void showSearchRequestDialog() {
+        ModalSearchRequest dialog = new ModalSearchRequest();
+        
+        dialog.setVisible(true);
+        
+        if (dialog.isSelected()) {
+            Document doc = dialog.getDocument();
+            
+            setRequest(doc);
+        }
+    }
+    
+    private void setRequest(Document request) {
+        this.request = request;
+        
+        txtPosisi.setText(request.getString("posisi"));
+    }
+    
+    private void setKandidat(Document kandidat) {
+        this.kandidat = kandidat;
+        
+        txtKTP.setText(kandidat.getString("ktp"));
+        txtNamaKandidat.setText(kandidat.getString("nama"));
+    }
+    
+    private boolean isKandidatSet() {
+        return kandidat != null;
+    }
+    
+    private boolean isRequestSet() {
+        return request != null;
+    }
+    
+    private void closeForm() {
+        this.setVisible(false);
+        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+    }
+    
+    private void messageAndClose() {
+        JOptionPane.showMessageDialog(this,
+                        "Berhasil menginput hasil penilaian",
+                        "Berhasil Login",
+                        JOptionPane.INFORMATION_MESSAGE);
+        
+        this.closeForm();
+    }
+    
+    private void saveDocument() throws InvalidInputException {
+        RequestManpower new_doc = new RequestManpower();
+        
+        if (!isKandidatSet()) {
+            throw new InvalidInputException("Anda belum memilih kandidat!");
+        }
+        
+        if (!isRequestSet()) {
+            throw new InvalidInputException("Anda belum memilih posisi lamaran!");
+        }
+        
+//        new_doc.setKlienId(klien.getObjectId("_id"));
+//        new_doc.setMinPendidikan(cmbEducational.getItemAt(cmbEducational.getSelectedIndex()));
+//        new_doc.setMinPengalaman((int)txtTahunPengalaman.getValue());
+//        new_doc.setJmlPermintaan((int)txtJmlKebutuhan.getValue());
+//        new_doc.setPosisi(txtPosisi.getText());
+//        new_doc.setDeskripsi(txtDescription.getText());
+//        new_doc.setNotes(txtNotes.getText());
+//        new_doc.setIsActive(chkAktif.isSelected());
+//        new_doc.save();
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

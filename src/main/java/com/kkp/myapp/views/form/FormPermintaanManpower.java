@@ -4,11 +4,8 @@ import com.kkp.myapp.exceptions.InvalidInputException;
 import com.kkp.myapp.models.RequestManpower;
 import com.kkp.myapp.views.modals.ModalSearchKlien;
 import java.awt.event.WindowEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 
 public class FormPermintaanManpower extends javax.swing.JFrame {
 
@@ -284,7 +281,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
     
     private void messageAndClose() {
         JOptionPane.showMessageDialog(this,
-                        "Berhasil menginput data kandidat",
+                        "Berhasil menginput data permintaan manpower",
                         "Berhasil Login",
                         JOptionPane.INFORMATION_MESSAGE);
         
