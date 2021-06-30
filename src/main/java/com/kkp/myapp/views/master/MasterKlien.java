@@ -23,6 +23,11 @@ public class MasterKlien extends javax.swing.JFrame {
      */
     public MasterKlien() {
         initComponents();
+    }
+    
+    private void InitForm() {
+        tabelKlien1.Init();
+        formKlien1.Init();
         tabelKlien1.addListener((DataActionType action, Object data) -> {
             this.ProcessData(action, data);
         });
@@ -112,7 +117,7 @@ public class MasterKlien extends javax.swing.JFrame {
         });
 
         jTabbedPane1.setEnabled(false);
-        jTabbedPane1.addTab("Tabel", tabelKlien1);
+        jTabbedPane1.addTab("Table", tabelKlien1);
         jTabbedPane1.addTab("Form", formKlien1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +143,7 @@ public class MasterKlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.InitForm();
         tabelKlien1.RefreshTable();
     }//GEN-LAST:event_formWindowOpened
 

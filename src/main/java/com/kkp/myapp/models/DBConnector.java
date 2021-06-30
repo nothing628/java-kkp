@@ -17,8 +17,9 @@ public class DBConnector {
     public static MongoCollection<Document> rejectCollection;
     public static MongoCollection<Document> klienCollection;
     public static MongoCollection<Document> userCollection;
+    public static MongoCollection<Document> kandidatCollection;
     public static MongoClient client;
-    
+
     // Use this only for development reason
 //    static {
 //        if (DBConnector.client == null) {
@@ -45,6 +46,7 @@ public class DBConnector {
             MongoDatabase database = mongoClient.getDatabase(connInfo.getDbName());
 
             DBConnector.client = mongoClient;
+            DBConnector.kandidatCollection = database.getCollection("kandidat");
             DBConnector.klienCollection = database.getCollection("klien");
             DBConnector.rejectCollection = database.getCollection("reject_reason");
             DBConnector.userCollection = database.getCollection("users");
@@ -82,7 +84,7 @@ public class DBConnector {
 
     public static void seedUsers() {
         Users user = new Users();
-        
+
         user.setUsername("admin");
         user.setEmail("admin@admin.com");
         user.setPasswordHash("12345678");
@@ -90,8 +92,10 @@ public class DBConnector {
         user.setLevel(UserLevel.Administrator);
         user.save();
     }
-    
+
     protected static void checkAndCreateIndex() {
+        DBConnector.kandidatCollection.createIndex(Indexes.text("nama"), new IndexOptions().name("nama_1"));
+        DBConnector.kandidatCollection.createIndex(Indexes.ascending("ktp"), new IndexOptions().unique(true).name("ktp_1"));
         DBConnector.klienCollection.createIndex(Indexes.text("nama"), new IndexOptions().name("nama_1"));
         DBConnector.klienCollection.createIndex(Indexes.ascending("kode"), new IndexOptions().unique(true).name("kode_1"));
         DBConnector.rejectCollection.createIndex(Indexes.ascending("code"), new IndexOptions().unique(true).name("code_1"));

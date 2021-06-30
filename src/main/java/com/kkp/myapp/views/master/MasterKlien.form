@@ -58,8 +58,8 @@
         <Component class="com.kkp.myapp.views.master.TabelKlien" name="tabelKlien1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Tabel">
-                <Property name="tabTitle" type="java.lang.String" value="Tabel"/>
+              <JTabbedPaneConstraints tabName="Table">
+                <Property name="tabTitle" type="java.lang.String" value="Table"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

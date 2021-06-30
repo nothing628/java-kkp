@@ -13,12 +13,16 @@ import org.bson.types.ObjectId;
 public class FormKlien extends javax.swing.JPanel {
 
     private Document current;
-    private final MongoCollection<Document> myCollection;
+    private MongoCollection<Document> myCollection;
     private final List<DataEventListener> listeners = new ArrayList<>();
 
     public FormKlien() {
         initComponents();
 
+        myCollection = null;
+    }
+    
+    public void Init() {
         myCollection = DBConnector.klienCollection;
     }
 
@@ -175,9 +179,9 @@ public class FormKlien extends javax.swing.JPanel {
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         if (this.isEditMode()) {
-            updateKlien();
+            updateDocument();
         } else {
-            saveKlien();
+            saveDocument();
         }
         
         dispatchDataEvent(DataActionType.LIST, null);
@@ -191,7 +195,7 @@ public class FormKlien extends javax.swing.JPanel {
         return current != null;
     }
     
-    private void updateKlien() {
+    private void updateDocument() {
         ObjectId current_id = current.getObjectId("_id");
         
         Klien newKlien = new Klien();
@@ -205,7 +209,7 @@ public class FormKlien extends javax.swing.JPanel {
         newKlien.update();
     }
     
-    private void saveKlien() {
+    private void saveDocument() {
         Klien newKlien = new Klien();
         newKlien.setKode(txtCode.getText());
         newKlien.setNamaPerusahaan(txtName.getText());
