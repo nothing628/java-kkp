@@ -1,5 +1,7 @@
 package com.kkp.myapp.models;
 
+import com.mongodb.client.result.InsertOneResult;
+import org.bson.BsonValue;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -98,6 +100,33 @@ public class Penilaian extends BaseModelWithTimestamp {
 
     public String getPenilai() {
         return penilai;
+    }
+    
+    private Document getRequestDocument() {
+        RequestManpower manPower = new RequestManpower();
+        
+        manPower.setId(request_id);
+        manPower.load();
+        
+        return manPower.toDocument();
+    }
+    
+    @Override
+    public void save() {
+        Document saveDocument = toDocument();
+        Document requestDocument = getRequestDocument();
+        
+        saveDocument.append("request_info", requestDocument);
+
+        InsertOneResult result = this.myCollection.insertOne(saveDocument);
+        BsonValue insertId = result.getInsertedId();
+
+        if (insertId != null && insertId.isObjectId()) {
+            var val = insertId.asObjectId().getValue();
+
+            this.id = val;
+            this.load();
+        }
     }
 
     @Override
