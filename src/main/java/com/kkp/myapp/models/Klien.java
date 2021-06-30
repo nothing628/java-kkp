@@ -1,9 +1,5 @@
 package com.kkp.myapp.models;
 
-import static com.mongodb.client.model.Filters.eq;
-import com.mongodb.client.model.UpdateOptions;
-import static com.mongodb.client.model.Updates.combine;
-import static com.mongodb.client.model.Updates.set;
 import org.bson.Document;
 
 public class Klien extends BaseModel {
