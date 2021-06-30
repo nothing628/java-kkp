@@ -94,6 +94,7 @@ public class DBConnector {
     }
 
     protected static void checkAndCreateIndex() {
+        DBConnector.kandidatCollection.createIndex(Indexes.ascending("createdAt"), new IndexOptions().name("createdAt_1"));
         DBConnector.kandidatCollection.createIndex(Indexes.text("nama"), new IndexOptions().name("nama_1"));
         DBConnector.kandidatCollection.createIndex(Indexes.ascending("ktp"), new IndexOptions().unique(true).name("ktp_1"));
         DBConnector.klienCollection.createIndex(Indexes.text("nama"), new IndexOptions().name("nama_1"));

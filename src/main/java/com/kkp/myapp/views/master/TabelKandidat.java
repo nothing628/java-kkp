@@ -7,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -80,6 +81,7 @@ public class TabelKandidat extends javax.swing.JPanel {
         new_model.addColumn("Email");
         new_model.addColumn("Pendidikan");
         new_model.addColumn("Pengalaman");
+        new_model.addColumn("Status");
 
         this.t_model = new_model;
         this.tblData.setModel(new_model);
@@ -87,6 +89,10 @@ public class TabelKandidat extends javax.swing.JPanel {
     
     private ArrayList<Object[]> getData() {
         String keyword = txtKeyword.getText();
+        Date start_date = dtStart.getDate();
+        Date end_date = dtEnd.getDate();
+        String status = cmbStatus.getItemAt(cmbStatus.getSelectedIndex());
+        
         var is_keyword_empty = keyword.length() == 0;
         var iterator = myCollection.find(!is_keyword_empty ? Filters.text(keyword) : new Document()).iterator();
         ArrayList<Object[]> result = new ArrayList();
@@ -103,6 +109,7 @@ public class TabelKandidat extends javax.swing.JPanel {
             row.add(doc.getString("email"));
             row.add(pendidikan.getString("tingkat"));
             row.add(pengalaman.getInteger("lama"));
+            row.add(doc.getString("status"));
 
             result.add(row.toArray());
         }
@@ -322,7 +329,7 @@ public class TabelKandidat extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-        // TODO add your handling code here:
+        RefreshTable();
     }//GEN-LAST:event_btnCariActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed

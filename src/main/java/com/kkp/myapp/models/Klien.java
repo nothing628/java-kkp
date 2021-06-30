@@ -2,7 +2,7 @@ package com.kkp.myapp.models;
 
 import org.bson.Document;
 
-public class Klien extends BaseModel {
+public class Klien extends BaseModelWithTimestamp {
 
     private String kode;
     private String nama_perusahaan;

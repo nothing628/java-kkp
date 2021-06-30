@@ -42,7 +42,7 @@ public abstract class BaseModel {
         this.load();
     }
 
-    private Bson toUpdateComposite() {
+    protected Bson toUpdateComposite() {
         var listUpdate = new ArrayList<Bson>();
         var document = toDocument();
         var keyIterator = document.keySet().iterator();
