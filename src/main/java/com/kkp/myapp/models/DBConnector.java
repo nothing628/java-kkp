@@ -15,6 +15,7 @@ import org.bson.Document;
 public class DBConnector {
 
     public static MongoCollection<Document> rejectCollection;
+    public static MongoCollection<Document> requestCollection;
     public static MongoCollection<Document> klienCollection;
     public static MongoCollection<Document> userCollection;
     public static MongoCollection<Document> kandidatCollection;
@@ -46,6 +47,7 @@ public class DBConnector {
             MongoDatabase database = mongoClient.getDatabase(connInfo.getDbName());
 
             DBConnector.client = mongoClient;
+            DBConnector.requestCollection = database.getCollection("request_manpower");
             DBConnector.kandidatCollection = database.getCollection("kandidat");
             DBConnector.klienCollection = database.getCollection("klien");
             DBConnector.rejectCollection = database.getCollection("reject_reason");
@@ -94,6 +96,7 @@ public class DBConnector {
     }
 
     protected static void checkAndCreateIndex() {
+        DBConnector.requestCollection.createIndex(Indexes.ascending("klien_id"), new IndexOptions().name("klien_id_1"));
         DBConnector.kandidatCollection.createIndex(Indexes.ascending("createdAt"), new IndexOptions().name("createdAt_1"));
         DBConnector.kandidatCollection.createIndex(Indexes.text("nama"), new IndexOptions().name("nama_1"));
         DBConnector.kandidatCollection.createIndex(Indexes.ascending("ktp"), new IndexOptions().unique(true).name("ktp_1"));
