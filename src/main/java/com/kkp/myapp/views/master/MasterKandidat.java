@@ -1,5 +1,6 @@
 package com.kkp.myapp.views.master;
 
+import com.kkp.myapp.models.Kandidat;
 import com.kkp.myapp.models.Klien;
 import com.kkp.myapp.views.events.DataActionType;
 import javax.swing.JOptionPane;
@@ -63,9 +64,9 @@ public class MasterKandidat extends javax.swing.JFrame {
     private void deleteData(Object data) {
         Document document = (Document) data;
         ObjectId document_id = document.getObjectId("_id");
-        Klien newKlien = new Klien();
-        newKlien.setId(document_id);
-        newKlien.delete();
+        Kandidat new_doc = new Kandidat();
+        new_doc.setId(document_id);
+        new_doc.delete();
     }
     
     private void showTable() {
@@ -75,13 +76,13 @@ public class MasterKandidat extends javax.swing.JFrame {
     
     private void showFormCreate() {
         jTabbedPane1.setSelectedIndex(1);
-        frmKandidat.setTitle("Tambah Klien");
+        frmKandidat.setTitle("Tambah Kandidat");
         frmKandidat.setCurrentData(null);
     }
     
     private void showFormEdit(Object current_data) {
         jTabbedPane1.setSelectedIndex(1);
-        frmKandidat.setTitle("Edit Klien");
+        frmKandidat.setTitle("Ubah Kandidat");
         frmKandidat.setCurrentData(current_data);
     }
 

@@ -175,7 +175,7 @@ public class Kandidat extends BaseModel {
         this.email = document.getString("email");
         this.alamat = document.getString("alamat");
         this.status_kandidat = document.getString("status");
-        this.status_nikah = document.getString("marriage_status");
+        this.status_nikah = document.getString("status_nikah");
         this.agama = document.getString("agama");
     }
 

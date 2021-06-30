@@ -1,7 +1,8 @@
 package com.kkp.myapp.views.master;
 
+import com.kkp.myapp.enums.KandidatStatus;
 import com.kkp.myapp.models.DBConnector;
-import com.kkp.myapp.models.Klien;
+import com.kkp.myapp.models.Kandidat;
 import com.kkp.myapp.views.events.DataActionType;
 import com.kkp.myapp.views.events.DataEventListener;
 import com.mongodb.client.MongoCollection;
@@ -43,14 +44,52 @@ public class FormKandidat extends javax.swing.JPanel {
     private void updateDocument() {
         ObjectId current_id = current.getObjectId("_id");
         
-        Klien newKlien = new Klien();
-        newKlien.setId(current_id);
-        newKlien.update();
+        Kandidat new_doc = new Kandidat();
+        new_doc.setId(current_id);
+        
+        new_doc.setKtp(txtKTP.getText());
+        new_doc.setNama(txtFullname.getText());
+        new_doc.setTempatLahir(txtTempatLahir.getText());
+        new_doc.setTanggalLahir(txtDOB.getDate());
+        new_doc.setNoTelepon(txtPhoneNumber.getText());
+        new_doc.setEmail(txtEmail.getText());
+        new_doc.setAlamat(txtAddress.getText());
+        new_doc.setTempatPendidikan(txtSchoolName.getText());
+        new_doc.setJurusanPendidikan(txtEducationMajor.getText());
+        new_doc.setTempatPengalaman(txtLatestCompanyName.getText());
+        new_doc.setPosisiPengalaman(txtLatestPosition.getText());
+        
+        new_doc.setLamaPengalaman((int)txtLamaPengalaman.getValue());
+        new_doc.setTingkatPendidikan(cmbEducational.getItemAt(cmbEducational.getSelectedIndex()));
+        new_doc.setStatusNikah(cmbMariaggeStatus.getItemAt(cmbMariaggeStatus.getSelectedIndex()));
+        new_doc.setAgama(cmbReligion.getItemAt(cmbReligion.getSelectedIndex()));
+        new_doc.setStatus(KandidatStatus.MENUNGGU.getStatus());
+        
+        new_doc.update();
     }
     
     private void saveDocument() {
-        Klien newKlien = new Klien();
-        newKlien.save();
+        Kandidat new_doc = new Kandidat();
+        
+        new_doc.setKtp(txtKTP.getText());
+        new_doc.setNama(txtFullname.getText());
+        new_doc.setTempatLahir(txtTempatLahir.getText());
+        new_doc.setTanggalLahir(txtDOB.getDate());
+        new_doc.setNoTelepon(txtPhoneNumber.getText());
+        new_doc.setEmail(txtEmail.getText());
+        new_doc.setAlamat(txtAddress.getText());
+        new_doc.setTempatPendidikan(txtSchoolName.getText());
+        new_doc.setJurusanPendidikan(txtEducationMajor.getText());
+        new_doc.setTempatPengalaman(txtLatestCompanyName.getText());
+        new_doc.setPosisiPengalaman(txtLatestPosition.getText());
+        
+        new_doc.setLamaPengalaman((int)txtLamaPengalaman.getValue());
+        new_doc.setTingkatPendidikan(cmbEducational.getItemAt(cmbEducational.getSelectedIndex()));
+        new_doc.setStatusNikah(cmbMariaggeStatus.getItemAt(cmbMariaggeStatus.getSelectedIndex()));
+        new_doc.setAgama(cmbReligion.getItemAt(cmbReligion.getSelectedIndex()));
+        new_doc.setStatus(KandidatStatus.MENUNGGU.getStatus());
+        
+        new_doc.save();
     }
 
     public void setTitle(String title) {
@@ -64,8 +103,28 @@ public class FormKandidat extends javax.swing.JPanel {
         }
 
         current = (Document)data;
-        txtPhoneNumber.setText(current.getString("no_telepon"));
-        txtEmail.setText(current.getString("email"));
+        var current_kandidat = new Kandidat();
+        current_kandidat.setId(current.getObjectId("_id"));
+        current_kandidat.load();
+        
+        txtKTP.setEnabled(false);
+        
+        txtKTP.setText(current_kandidat.getKtp());
+        txtFullname.setText(current_kandidat.getNama());
+        txtTempatLahir.setText(current_kandidat.getTempatLahir());
+        txtDOB.setDate(current_kandidat.getTanggalLahir());
+        txtPhoneNumber.setText(current_kandidat.getNoTelepon());
+        txtEmail.setText(current_kandidat.getEmail());
+        txtAddress.setText(current_kandidat.getAlamat());
+        txtSchoolName.setText(current_kandidat.getNamaPendidikan());
+        txtEducationMajor.setText(current_kandidat.getJurursanPendidikan());
+        txtLatestCompanyName.setText(current_kandidat.getTempatPengalaman());
+        txtLatestPosition.setText(current_kandidat.getPosisiPengalaman());
+        
+        txtLamaPengalaman.setValue(current_kandidat.getLamaPengalaman());
+        cmbEducational.setSelectedItem(current_kandidat.getTingkatPendidikan());
+        cmbMariaggeStatus.setSelectedItem(current_kandidat.getStatusNikah());
+        cmbReligion.setSelectedItem(current_kandidat.getAgama());
     }
     
     private void clearForm() {
@@ -87,7 +146,7 @@ public class FormKandidat extends javax.swing.JPanel {
         cmbReligion = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        txtLamaPengalaman = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtDOB = new org.jdesktop.swingx.JXDatePicker();
@@ -110,6 +169,7 @@ public class FormKandidat extends javax.swing.JPanel {
         btnCancel = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         txtKTP = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
 
         txtAddress.setColumns(20);
         txtAddress.setRows(5);
@@ -125,7 +185,7 @@ public class FormKandidat extends javax.swing.JPanel {
             }
         });
 
-        cmbMariaggeStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Belum Kawin", "Kawin", " " }));
+        cmbMariaggeStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Belum Kawin", "Kawin", "Duda/Janda" }));
 
         cmbEducational.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SMP", "SMA", "SMK", "S1", "S2", "S3" }));
 
@@ -145,27 +205,9 @@ public class FormKandidat extends javax.swing.JPanel {
 
         jLabel6.setText("Email");
 
-        txtLatestCompanyName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLatestCompanyNameActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Alamat");
 
         jLabel8.setText("Pendidikan");
-
-        txtSchoolName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSchoolNameActionPerformed(evt);
-            }
-        });
-
-        txtLatestPosition.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLatestPositionActionPerformed(evt);
-            }
-        });
 
         jLabel9.setText("Jurusan");
 
@@ -174,12 +216,6 @@ public class FormKandidat extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 18)); // NOI18N
         lblTitle.setText("Form Input Kandidat");
         lblTitle.setToolTipText("");
-
-        txtEducationMajor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEducationMajorActionPerformed(evt);
-            }
-        });
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cancel.png"))); // NOI18N
         btnCancel.setText("Batal");
@@ -190,6 +226,8 @@ public class FormKandidat extends javax.swing.JPanel {
         });
 
         jLabel13.setText("Status Pernikahan");
+
+        jLabel15.setText("di");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -228,13 +266,9 @@ public class FormKandidat extends javax.swing.JPanel {
                                         .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtFullname, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cmbEducational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtSchoolName, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtEducationMajor, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtLamaPengalaman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel10)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -246,7 +280,14 @@ public class FormKandidat extends javax.swing.JPanel {
                                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 42, Short.MAX_VALUE)))
+                                .addGap(0, 61, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmbEducational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtSchoolName, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -283,14 +324,15 @@ public class FormKandidat extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbEducational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(txtSchoolName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSchoolName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEducationMajor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLamaPengalaman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
                     .addComponent(txtLatestCompanyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -313,22 +355,6 @@ public class FormKandidat extends javax.swing.JPanel {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtLatestCompanyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLatestCompanyNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLatestCompanyNameActionPerformed
-
-    private void txtSchoolNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSchoolNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSchoolNameActionPerformed
-
-    private void txtLatestPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLatestPositionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLatestPositionActionPerformed
-
-    private void txtEducationMajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEducationMajorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEducationMajorActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if (this.isEditMode()) {
@@ -356,6 +382,7 @@ public class FormKandidat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -365,7 +392,6 @@ public class FormKandidat extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextArea txtAddress;
     private org.jdesktop.swingx.JXDatePicker txtDOB;
@@ -373,6 +399,7 @@ public class FormKandidat extends javax.swing.JPanel {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFullname;
     private javax.swing.JTextField txtKTP;
+    private javax.swing.JSpinner txtLamaPengalaman;
     private javax.swing.JTextField txtLatestCompanyName;
     private javax.swing.JTextField txtLatestPosition;
     private javax.swing.JTextField txtPhoneNumber;

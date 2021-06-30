@@ -21,11 +21,11 @@ public class DBConnector {
     public static MongoClient client;
 
     // Use this only for development reason
-//    static {
-//        if (DBConnector.client == null) {
-//            openConnection();
-//        }
-//    }
+    static {
+        if (DBConnector.client == null) {
+            openConnection();
+        }
+    }
 
     public static void closeConnection() {
         if (client != null) {

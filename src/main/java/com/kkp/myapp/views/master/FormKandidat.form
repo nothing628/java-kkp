@@ -52,14 +52,9 @@
                                   </Group>
                                   <Component id="txtFullname" alignment="0" min="-2" pref="493" max="-2" attributes="0"/>
                                   <Component id="txtEmail" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cmbEducational" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtSchoolName" min="-2" pref="298" max="-2" attributes="0"/>
-                                  </Group>
                                   <Component id="txtEducationMajor" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jSpinner1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtLamaPengalaman" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -74,7 +69,15 @@
                                       <Component id="btnCancel" min="-2" pref="115" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="42" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="61" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="cmbEducational" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel15" min="-2" pref="20" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txtSchoolName" min="-2" pref="298" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -123,7 +126,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmbEducational" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSchoolName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSchoolName" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -132,7 +136,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtLamaPengalaman" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtLatestCompanyName" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -200,7 +204,7 @@
           <StringArray count="3">
             <StringItem index="0" value="Belum Kawin"/>
             <StringItem index="1" value="Kawin"/>
-            <StringItem index="2" value=" "/>
+            <StringItem index="2" value="Duda/Janda"/>
           </StringArray>
         </Property>
       </Properties>
@@ -250,7 +254,7 @@
         <Property name="text" type="java.lang.String" value="Nama Lengkap"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSpinner" name="jSpinner1">
+    <Component class="javax.swing.JSpinner" name="txtLamaPengalaman">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -284,9 +288,6 @@
     <Component class="javax.swing.JTextField" name="txtTempatLahir">
     </Component>
     <Component class="javax.swing.JTextField" name="txtLatestCompanyName">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLatestCompanyNameActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -301,14 +302,8 @@
     <Component class="javax.swing.JTextField" name="txtPhoneNumber">
     </Component>
     <Component class="javax.swing.JTextField" name="txtSchoolName">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSchoolNameActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLatestPosition">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLatestPositionActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -332,9 +327,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEducationMajor">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEducationMajorActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCancel">
       <Properties>
@@ -353,6 +345,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtKTP">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel15">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="di"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

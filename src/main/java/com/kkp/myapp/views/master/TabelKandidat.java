@@ -42,7 +42,7 @@ public class TabelKandidat extends javax.swing.JPanel {
     
     private Document getSelectedDocument(String kode) {
         try {
-            Document queryResult = myCollection.find(eq("kode", kode)).first();
+            Document queryResult = myCollection.find(eq("ktp", kode)).first();
 
             return queryResult;
         } catch (Exception ex) {
@@ -74,11 +74,12 @@ public class TabelKandidat extends javax.swing.JPanel {
 
     private void createTableModel() {
         DefaultTableModel new_model = new DefaultTableModel();
-        new_model.addColumn("Kode");
-        new_model.addColumn("Nama Perusahaan");
+        new_model.addColumn("KTP");
+        new_model.addColumn("Nama Lengkap");
         new_model.addColumn("Telp");
         new_model.addColumn("Email");
-        new_model.addColumn("Aktif");
+        new_model.addColumn("Pendidikan");
+        new_model.addColumn("Pengalaman");
 
         this.t_model = new_model;
         this.tblData.setModel(new_model);
@@ -92,13 +93,16 @@ public class TabelKandidat extends javax.swing.JPanel {
 
         while (iterator.hasNext()) {
             Document doc = iterator.next();
+            Document pengalaman = doc.get("pengalaman", new Document());
+            Document pendidikan = doc.get("pendidikan", new Document());
             ArrayList row = new ArrayList();
 
-            row.add(doc.getString("kode"));
+            row.add(doc.getString("ktp"));
             row.add(doc.getString("nama"));
             row.add(doc.getString("no_telepon"));
             row.add(doc.getString("email"));
-            row.add(doc.getBoolean("is_active") ? "Ya" : "Tidak");
+            row.add(pendidikan.getString("tingkat"));
+            row.add(pengalaman.getInteger("lama"));
 
             result.add(row.toArray());
         }

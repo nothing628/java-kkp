@@ -91,7 +91,7 @@ public class MasterKlien extends javax.swing.JFrame {
     
     private void showFormEdit(Object current_data) {
         jTabbedPane1.setSelectedIndex(1);
-        formKlien1.setTitle("Edit Klien");
+        formKlien1.setTitle("Ubah Klien");
         formKlien1.setCurrentData(current_data);
     }
 
