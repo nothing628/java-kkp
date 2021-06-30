@@ -45,7 +45,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="com.kkp.myapp.views.master.FormKandidat" name="frmKandidat">
+    <Component class="com.kkp.myapp.views.controls.FormKandidat" name="frmKandidat">
     </Component>
   </SubComponents>
 </Form>

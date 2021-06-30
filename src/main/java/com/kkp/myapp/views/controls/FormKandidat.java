@@ -1,4 +1,4 @@
-package com.kkp.myapp.views.master;
+package com.kkp.myapp.views.controls;
 
 import com.kkp.myapp.enums.KandidatStatus;
 import com.kkp.myapp.models.DBConnector;

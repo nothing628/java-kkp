@@ -46,7 +46,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="com.kkp.myapp.views.master.TabelSearchKlien" name="tabelSearchKlien1">
+    <Component class="com.kkp.myapp.views.controls.TabelSearchKlien" name="tabelSearchKlien1">
     </Component>
   </SubComponents>
 </Form>

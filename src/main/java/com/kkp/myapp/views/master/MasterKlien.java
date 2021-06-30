@@ -105,8 +105,8 @@ public class MasterKlien extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        tabelKlien1 = new com.kkp.myapp.views.master.TabelKlien();
-        formKlien1 = new com.kkp.myapp.views.master.FormKlien();
+        tabelKlien1 = new com.kkp.myapp.views.controls.TabelKlien();
+        formKlien1 = new com.kkp.myapp.views.controls.FormKlien();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Master Klien");
@@ -184,8 +184,8 @@ public class MasterKlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.kkp.myapp.views.master.FormKlien formKlien1;
+    private com.kkp.myapp.views.controls.FormKlien formKlien1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private com.kkp.myapp.views.master.TabelKlien tabelKlien1;
+    private com.kkp.myapp.views.controls.TabelKlien tabelKlien1;
     // End of variables declaration//GEN-END:variables
 }

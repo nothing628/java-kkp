@@ -1,4 +1,4 @@
-package com.kkp.myapp.views.master;
+package com.kkp.myapp.views.controls;
 
 import com.kkp.myapp.models.DBConnector;
 import com.kkp.myapp.models.Klien;

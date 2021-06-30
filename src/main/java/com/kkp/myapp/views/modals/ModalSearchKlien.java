@@ -1,4 +1,4 @@
-package com.kkp.myapp.views.master;
+package com.kkp.myapp.views.modals;
 
 import com.kkp.myapp.views.events.DataActionType;
 import java.awt.event.WindowEvent;
@@ -59,7 +59,7 @@ public class ModalSearchKlien extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tabelSearchKlien1 = new com.kkp.myapp.views.master.TabelSearchKlien();
+        tabelSearchKlien1 = new com.kkp.myapp.views.controls.TabelSearchKlien();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cari Klien");
@@ -130,6 +130,6 @@ public class ModalSearchKlien extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.kkp.myapp.views.master.TabelSearchKlien tabelSearchKlien1;
+    private com.kkp.myapp.views.controls.TabelSearchKlien tabelSearchKlien1;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,7 +2,7 @@ package com.kkp.myapp.views.form;
 
 import com.kkp.myapp.exceptions.InvalidInputException;
 import com.kkp.myapp.models.RequestManpower;
-import com.kkp.myapp.views.master.ModalSearchKlien;
+import com.kkp.myapp.views.modals.ModalSearchKlien;
 import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;

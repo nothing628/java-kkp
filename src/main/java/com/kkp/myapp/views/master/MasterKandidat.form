@@ -52,7 +52,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Component class="com.kkp.myapp.views.master.TabelKandidat" name="tblKandidat">
+        <Component class="com.kkp.myapp.views.controls.TabelKandidat" name="tblKandidat">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Table">
@@ -61,7 +61,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.kkp.myapp.views.master.FormKandidat" name="frmKandidat">
+        <Component class="com.kkp.myapp.views.controls.FormKandidat" name="frmKandidat">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Form">

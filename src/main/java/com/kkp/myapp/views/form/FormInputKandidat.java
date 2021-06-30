@@ -47,7 +47,7 @@ public class FormInputKandidat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        frmKandidat = new com.kkp.myapp.views.master.FormKandidat();
+        frmKandidat = new com.kkp.myapp.views.controls.FormKandidat();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Form Input Kandidat");
@@ -114,6 +114,6 @@ public class FormInputKandidat extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.kkp.myapp.views.master.FormKandidat frmKandidat;
+    private com.kkp.myapp.views.controls.FormKandidat frmKandidat;
     // End of variables declaration//GEN-END:variables
 }
