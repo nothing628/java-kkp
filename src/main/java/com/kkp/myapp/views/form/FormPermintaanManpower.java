@@ -1,12 +1,18 @@
 package com.kkp.myapp.views.form;
 
+import com.kkp.myapp.exceptions.InvalidInputException;
 import com.kkp.myapp.models.RequestManpower;
+import com.kkp.myapp.views.master.ModalSearchKlien;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class FormPermintaanManpower extends javax.swing.JFrame {
 
+    Document klien;
     public FormPermintaanManpower() {
         initComponents();
     }
@@ -23,7 +29,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
-        txtKTP = new javax.swing.JTextField();
+        txtKode = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
         btnSave = new javax.swing.JButton();
@@ -31,7 +37,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtJmlKebutuhan = new javax.swing.JSpinner();
-        txtFullname = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtTahunPengalaman = new javax.swing.JSpinner();
@@ -68,7 +74,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
             }
         });
 
-        txtKTP.setEditable(false);
+        txtKode.setEditable(false);
 
         txtDescription.setColumns(20);
         txtDescription.setRows(5);
@@ -88,7 +94,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
 
         jLabel3.setText("Nama Perusahaan");
 
-        txtFullname.setEditable(false);
+        txtName.setEditable(false);
 
         jLabel5.setText("No Telepon");
 
@@ -106,6 +112,11 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
 
         btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/search_file.png"))); // NOI18N
         btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
 
         chkAktif.setText("Status Permintaan : Aktif");
 
@@ -132,7 +143,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
                                     .addComponent(jLabel5))
                                 .addGap(31, 31, 31)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFullname)
+                                    .addComponent(txtName)
                                     .addComponent(jScrollPane1)
                                     .addComponent(jScrollPane2)
                                     .addGroup(layout.createSequentialGroup()
@@ -141,27 +152,28 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
                                             .addComponent(txtPosisi, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(cmbEducational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtJmlKebutuhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel17)
-                                                .addGap(126, 126, 126)
-                                                .addComponent(chkAktif))
-                                            .addGroup(layout.createSequentialGroup()
                                                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtKTP, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtKode, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 35, Short.MAX_VALUE))))
+                                        .addGap(0, 21, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtJmlKebutuhan, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel17)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(chkAktif)
+                                        .addGap(81, 81, 81))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel15)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtTahunPengalaman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtTahunPengalaman, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel16)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -174,12 +186,12 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtKTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtKode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(btnCari))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFullname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -216,7 +228,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnCancel))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -227,10 +239,44 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        saveDocument();
-        messageAndClose();
+        try {
+            saveDocument();
+            messageAndClose();
+        } catch (InvalidInputException ex) {
+            JOptionPane.showMessageDialog(this,
+                        ex.getMessage(),
+                        "Oops, ada kesalahan",
+                        JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        showSearchDialog();
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void showSearchDialog() {
+        ModalSearchKlien dialog = new ModalSearchKlien();
+        dialog.setVisible(true);
+        
+        if (dialog.isSelected()) {
+            Document doc = dialog.getDocument();
+            
+            setKlien(doc);
+        }
+    }
+    
+    private void setKlien(Document klien) {
+        this.klien = klien;
+        
+        txtKode.setText(klien.getString("kode"));
+        txtName.setText(klien.getString("nama"));
+        txtPhoneNumber.setText(klien.getString("no_telepon"));
+    }
+    
+    private boolean isKlienSet() {
+        return klien != null;
+    }
+    
     private void closeForm() {
         this.setVisible(false);
         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
@@ -245,10 +291,14 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
         this.closeForm();
     }
     
-    private void saveDocument() {
+    private void saveDocument() throws InvalidInputException {
         RequestManpower new_doc = new RequestManpower();
         
-        new_doc.setKlienId(new ObjectId());
+        if (!isKlienSet()) {
+            throw new InvalidInputException("Anda belum memilih klien!");
+        }
+        
+        new_doc.setKlienId(klien.getObjectId("_id"));
         new_doc.setMinPendidikan(cmbEducational.getItemAt(cmbEducational.getSelectedIndex()));
         new_doc.setMinPengalaman((int)txtTahunPengalaman.getValue());
         new_doc.setJmlPermintaan((int)txtJmlKebutuhan.getValue());
@@ -312,9 +362,9 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txtDescription;
-    private javax.swing.JTextField txtFullname;
     private javax.swing.JSpinner txtJmlKebutuhan;
-    private javax.swing.JTextField txtKTP;
+    private javax.swing.JTextField txtKode;
+    private javax.swing.JTextField txtName;
     private javax.swing.JTextArea txtNotes;
     private javax.swing.JTextField txtPhoneNumber;
     private javax.swing.JTextField txtPosisi;

@@ -8,6 +8,7 @@ public enum DataActionType {
     REFRESH,
     EXPORT,
     IMPORT,
+    SELECT,
     CANCEL_CREATE,
     CANCEL_UPDATE,
 }
