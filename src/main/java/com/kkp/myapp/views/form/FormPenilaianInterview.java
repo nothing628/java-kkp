@@ -1,12 +1,13 @@
 package com.kkp.myapp.views.form;
 
 import com.kkp.myapp.exceptions.InvalidInputException;
-import com.kkp.myapp.models.RequestManpower;
+import com.kkp.myapp.models.Penilaian;
 import com.kkp.myapp.views.modals.ModalSearchKandidat;
 import com.kkp.myapp.views.modals.ModalSearchRequest;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 public class FormPenilaianInterview extends javax.swing.JFrame {
 
@@ -60,6 +61,11 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Detail Interview");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 18)); // NOI18N
         jLabel1.setText("Form Penilaian Interview");
@@ -90,6 +96,18 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
         jLabel7.setToolTipText("");
 
         jLabel8.setText("Pengalaman Kerja");
+
+        txtNilaiPengalamanKerja.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+
+        txtNilaiGestur.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+
+        txtNilaiTanyaJawab.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+
+        txtNilaiAntusiasme.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+
+        txtNilaiKeterampilan.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+
+        txtRolePlay.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
 
         jLabel9.setText("Gestur");
 
@@ -139,9 +157,9 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -165,10 +183,9 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
                                 .addComponent(jLabel13)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNilaiAntusiasme, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNilaiKeterampilan, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                                .addComponent(txtRolePlay))))
+                            .addComponent(txtNilaiAntusiasme)
+                            .addComponent(txtNilaiKeterampilan)
+                            .addComponent(txtRolePlay)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -191,7 +208,7 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
                                 .addComponent(btnCariRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,9 +263,9 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSimpan)
-                    .addComponent(btnBatal))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBatal)
+                    .addComponent(btnSimpan))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -278,6 +295,10 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         closeForm();
     }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        txtKode.setText(new ObjectId().toHexString());
+    }//GEN-LAST:event_formWindowOpened
 
     private void showSearchKandidatDialog() {
         ModalSearchKandidat dialog = new ModalSearchKandidat();
@@ -338,7 +359,7 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
     }
     
     private void saveDocument() throws InvalidInputException {
-        RequestManpower new_doc = new RequestManpower();
+        Penilaian new_doc = new Penilaian();
         
         if (!isKandidatSet()) {
             throw new InvalidInputException("Anda belum memilih kandidat!");
@@ -348,15 +369,20 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
             throw new InvalidInputException("Anda belum memilih posisi lamaran!");
         }
         
-//        new_doc.setKlienId(klien.getObjectId("_id"));
-//        new_doc.setMinPendidikan(cmbEducational.getItemAt(cmbEducational.getSelectedIndex()));
-//        new_doc.setMinPengalaman((int)txtTahunPengalaman.getValue());
-//        new_doc.setJmlPermintaan((int)txtJmlKebutuhan.getValue());
-//        new_doc.setPosisi(txtPosisi.getText());
-//        new_doc.setDeskripsi(txtDescription.getText());
-//        new_doc.setNotes(txtNotes.getText());
-//        new_doc.setIsActive(chkAktif.isSelected());
-//        new_doc.save();
+        ObjectId id = new ObjectId(txtKode.getText());
+        
+        new_doc.setId(id);
+        new_doc.setPenilai(txtNamaPenilai.getText());
+        new_doc.setKandidatId(kandidat.getObjectId("_id"));
+        new_doc.setRequestId(request.getObjectId("_id"));
+        new_doc.setNotes(txtNotes.getText());
+        new_doc.setNilaiAntusiasme((int)txtNilaiAntusiasme.getValue());
+        new_doc.setNilaiGestur((int)txtNilaiGestur.getValue());
+        new_doc.setNilaiKeterampilan((int)txtNilaiKeterampilan.getValue());
+        new_doc.setNilaiPengalaman((int)txtNilaiPengalamanKerja.getValue());
+        new_doc.setNilaiRolePlay((int)txtRolePlay.getValue());
+        new_doc.setNilaiTanyaJawab((int)txtNilaiTanyaJawab.getValue());
+        new_doc.save();
     }
     
     public static void main(String args[]) {

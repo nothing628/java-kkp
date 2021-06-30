@@ -5,13 +5,17 @@ import com.kkp.myapp.views.events.DataActionType;
 import com.kkp.myapp.views.events.DataEventListener;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.text;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 public class TabelSearchRequest extends javax.swing.JPanel {
 
@@ -27,7 +31,7 @@ public class TabelSearchRequest extends javax.swing.JPanel {
     }
     
     public void Init() {
-        myCollection = DBConnector.kandidatCollection;
+        myCollection = DBConnector.requestCollection;
     }
     
     public void addListener(DataEventListener toAdd) {
@@ -42,7 +46,7 @@ public class TabelSearchRequest extends javax.swing.JPanel {
     
     private Document getSelectedDocument(String kode) {
         try {
-            Document queryResult = myCollection.find(eq("ktp", kode)).first();
+            Document queryResult = myCollection.find(eq("_id", new ObjectId(kode))).first();
 
             return queryResult;
         } catch (Exception ex) {
@@ -74,38 +78,38 @@ public class TabelSearchRequest extends javax.swing.JPanel {
 
     private void createTableModel() {
         DefaultTableModel new_model = new DefaultTableModel();
-        new_model.addColumn("KTP");
-        new_model.addColumn("Nama Lengkap");
-        new_model.addColumn("Telp");
-        new_model.addColumn("Email");
-        new_model.addColumn("Pendidikan");
-        new_model.addColumn("Pengalaman");
-        new_model.addColumn("Status");
+        new_model.addColumn("ID");
+        new_model.addColumn("Posisi");
+        new_model.addColumn("Deskripsi");
+        new_model.addColumn("Min.Pendidikan");
 
         this.t_model = new_model;
         this.tblData.setModel(new_model);
     }
     
     private ArrayList<Object[]> getData() {
+        ArrayList<Bson> filters = new ArrayList();
         String keyword = txtKeyword.getText();
         
         var is_keyword_empty = keyword.length() == 0;
-        var iterator = myCollection.find(!is_keyword_empty ? Filters.text(keyword) : new Document()).iterator();
+        
+        if (!is_keyword_empty) {
+            filters.add(text(keyword));
+        }
+        
+        filters.add(eq("is_active", true));
+        
+        var iterator = myCollection.find(and(filters)).iterator();
         ArrayList<Object[]> result = new ArrayList();
 
         while (iterator.hasNext()) {
             Document doc = iterator.next();
-            Document pengalaman = doc.get("pengalaman", new Document());
-            Document pendidikan = doc.get("pendidikan", new Document());
             ArrayList row = new ArrayList();
 
-            row.add(doc.getString("ktp"));
-            row.add(doc.getString("nama"));
-            row.add(doc.getString("no_telepon"));
-            row.add(doc.getString("email"));
-            row.add(pendidikan.getString("tingkat"));
-            row.add(pengalaman.getInteger("lama"));
-            row.add(doc.getString("status"));
+            row.add(doc.getObjectId("_id").toHexString());
+            row.add(doc.getString("posisi"));
+            row.add(doc.getString("deskripsi"));
+            row.add(doc.getString("min_pendidikan"));
 
             result.add(row.toArray());
         }
