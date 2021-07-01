@@ -2,6 +2,7 @@ package com.kkp.myapp.models;
 
 import com.kkp.myapp.enums.KandidatStatus;
 import com.mongodb.client.result.InsertOneResult;
+import java.util.Date;
 import org.bson.BsonValue;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -19,7 +20,7 @@ public class Penilaian extends BaseModelWithTimestamp {
     private String notes;
     private String penilai;
     private String status;
-    
+
     public Penilaian() {
         myCollection = DBConnector.penilaianCollection;
     }
@@ -27,7 +28,7 @@ public class Penilaian extends BaseModelWithTimestamp {
     public void setStatus(KandidatStatus status) {
         this.status = status.getStatus();
     }
-    
+
     public void setKandidatId(ObjectId kandidat_id) {
         this.kandidat_id = kandidat_id;
     }
@@ -67,8 +68,12 @@ public class Penilaian extends BaseModelWithTimestamp {
     public void setPenilai(String penilai) {
         this.penilai = penilai;
     }
-    
+
     public KandidatStatus getStatus() {
+        if (status == null) {
+            return KandidatStatus.MENUNGGU;
+        }
+
         return KandidatStatus.valueOf(status);
     }
 
@@ -111,22 +116,24 @@ public class Penilaian extends BaseModelWithTimestamp {
     public String getPenilai() {
         return penilai;
     }
-    
+
     private Document getRequestDocument() {
         RequestManpower manPower = new RequestManpower();
-        
+
         manPower.setId(request_id);
         manPower.load();
-        
+
         return manPower.toDocument();
     }
-    
+
     @Override
     public void save() {
         Document saveDocument = toDocument();
         Document requestDocument = getRequestDocument();
-        
+
         saveDocument.replace("status", KandidatStatus.MENUNGGU.getStatus());
+        saveDocument.append("createdAt", new Date());
+        saveDocument.append("updatedAt", new Date());
         saveDocument.append("request_info", requestDocument);
 
         InsertOneResult result = this.myCollection.insertOne(saveDocument);
@@ -158,7 +165,7 @@ public class Penilaian extends BaseModelWithTimestamp {
     @Override
     protected Document toDocument() {
         Document new_doc = new Document();
-        
+
         new_doc.append("notes", notes)
                 .append("status", status)
                 .append("penilai", penilai)
@@ -170,7 +177,7 @@ public class Penilaian extends BaseModelWithTimestamp {
                 .append("nilai_pengalaman", nilai_pengalaman)
                 .append("request_id", request_id)
                 .append("kandidat_id", kandidat_id);
-        
+
         return new_doc;
     }
 

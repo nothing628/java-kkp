@@ -4,10 +4,14 @@ import com.kkp.myapp.models.DBConnector;
 import com.kkp.myapp.views.events.DataActionType;
 import com.kkp.myapp.views.events.DataEventListener;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Filters;
+import static com.mongodb.client.model.Aggregates.lookup;
+import static com.mongodb.client.model.Aggregates.match;
+import static com.mongodb.client.model.Aggregates.unwind;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.text;
+import com.mongodb.client.model.TextSearchOptions;
+import com.mongodb.client.model.UnwindOptions;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -88,28 +92,34 @@ public class TabelSearchRequest extends javax.swing.JPanel {
     }
     
     private ArrayList<Object[]> getData() {
-        ArrayList<Bson> filters = new ArrayList();
         String keyword = txtKeyword.getText();
-        
+
         var is_keyword_empty = keyword.length() == 0;
-        
+        var filter = new ArrayList<Bson>();
+
         if (!is_keyword_empty) {
-            filters.add(text(keyword));
+            filter.add(match(text(keyword, new TextSearchOptions().caseSensitive(false))));
         }
-        
-        filters.add(eq("is_active", true));
-        
-        var iterator = myCollection.find(and(filters)).iterator();
+
+        filter.add(lookup("penilaian", "_id", "kandidat_id", "penilaian"));
+        filter.add(unwind("$penilaian", new UnwindOptions().preserveNullAndEmptyArrays(false)));
+
+        var iterator = myCollection.aggregate(filter).iterator();
         ArrayList<Object[]> result = new ArrayList();
 
         while (iterator.hasNext()) {
             Document doc = iterator.next();
+            Document _penilaian = doc.get("penilaian", new Document());
+            Document request_info = _penilaian.get("request_info", new Document());
             ArrayList row = new ArrayList();
 
-            row.add(doc.getObjectId("_id").toHexString());
-            row.add(doc.getString("posisi"));
-            row.add(doc.getString("deskripsi"));
-            row.add(doc.getString("min_pendidikan"));
+            row.add(_penilaian.getObjectId("_id").toHexString());
+            row.add(doc.getString("nama"));
+            row.add(doc.getString("no_telepon"));
+            row.add(doc.getString("email"));
+            row.add(request_info.getString("posisi"));
+            row.add(_penilaian.getString("penilai"));
+            row.add(doc.getString("status"));
 
             result.add(row.toArray());
         }
