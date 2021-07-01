@@ -50,7 +50,7 @@ public class DBConnectionInfo {
     }
     
     public ConnectionString getConnectionString() {
-        String connStr = String.format("mongodb://%s:%s@%s:%d", dbUser, dbPassword, dbHost, dbPort);
+        String connStr = String.format("mongodb://%s:%s@%s:%d/%s", dbUser, dbPassword, dbHost, dbPort, dbName);
         
         return new ConnectionString(connStr);
     }

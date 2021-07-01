@@ -244,7 +244,7 @@ public class FormPengaturan extends javax.swing.JDialog {
 
             DBConnector.testConnection(connInfo);
         } catch (Exception ex) {
-            throw new Exception("Database tidak ditemukan");
+            throw new Exception("Database tidak ditemukan : " + ex.getMessage());
         }
     }
 
