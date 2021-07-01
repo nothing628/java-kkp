@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.kkp.myapp.views.master;
 
 import com.kkp.myapp.models.Klien;
@@ -11,16 +6,7 @@ import javax.swing.JOptionPane;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-
-/**
- *
- * @author titan
- */
 public class MasterKlien extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MasterKandidat
-     */
     public MasterKlien() {
         initComponents();
     }
