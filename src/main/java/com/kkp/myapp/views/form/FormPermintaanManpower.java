@@ -47,7 +47,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
         chkAktif = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Form Permintaan Kandidat");
+        setTitle("Form Permintaan Manpower");
 
         jLabel6.setText("Posisi yang dibutuhkan");
 
@@ -60,7 +60,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
         jLabel12.setText("Catatan Permintaan");
 
         jLabel1.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 18)); // NOI18N
-        jLabel1.setText("Form Permintaan Kandidat");
+        jLabel1.setText("Form Permintaan Manpower");
         jLabel1.setToolTipText("");
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kkp/myapp/assets/cancel.png"))); // NOI18N

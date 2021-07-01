@@ -72,6 +72,16 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
         jLabel1.setToolTipText("");
 
         txtKode.setEditable(false);
+        txtKode.setEnabled(false);
+
+        txtKTP.setEditable(false);
+        txtKTP.setEnabled(false);
+
+        txtNamaKandidat.setEditable(false);
+        txtNamaKandidat.setEnabled(false);
+
+        txtPosisi.setEditable(false);
+        txtPosisi.setEnabled(false);
 
         jLabel2.setText("Kode Interview");
 

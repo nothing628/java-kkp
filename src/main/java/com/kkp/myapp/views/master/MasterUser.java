@@ -90,12 +90,14 @@ public class MasterUser extends javax.swing.JFrame {
         formUser1 = new com.kkp.myapp.views.controls.FormUser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Daftar Pengguna Sistem");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
+        jTabbedPane1.setEnabled(false);
         jTabbedPane1.addTab("Table", tabelUser1);
         jTabbedPane1.addTab("Form", formUser1);
 
