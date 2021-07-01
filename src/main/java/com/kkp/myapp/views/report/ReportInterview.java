@@ -265,7 +265,7 @@ public class ReportInterview extends javax.swing.JFrame {
 
         try {
             helper.save(target);
-            
+
             showInfoMessage("Berhasil mengexport file, file berlokasi di " + target.getAbsolutePath());
         } catch (IOException ex) {
             showErrorMessage(ex.getMessage());
@@ -304,7 +304,7 @@ public class ReportInterview extends javax.swing.JFrame {
         DefaultTableModel t_m = (DefaultTableModel) this.t_model;
         t_m.setNumRows(0);
     }
-    
+
     private void showInfoMessage(String message) {
         JOptionPane.showMessageDialog(this, message, "Ooops, ada kesalahan", JOptionPane.INFORMATION_MESSAGE);
     }
