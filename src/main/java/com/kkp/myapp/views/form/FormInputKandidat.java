@@ -37,7 +37,7 @@ public class FormInputKandidat extends javax.swing.JFrame {
     private void messageAndClose() {
         JOptionPane.showMessageDialog(this,
                         "Berhasil menginput data kandidat",
-                        "Berhasil Login",
+                        "Berhasil menyimpan",
                         JOptionPane.INFORMATION_MESSAGE);
         
         this.closeForm();

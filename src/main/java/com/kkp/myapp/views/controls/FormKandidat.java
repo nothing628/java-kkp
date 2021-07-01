@@ -63,7 +63,7 @@ public class FormKandidat extends javax.swing.JPanel {
         new_doc.setTingkatPendidikan(cmbEducational.getItemAt(cmbEducational.getSelectedIndex()));
         new_doc.setStatusNikah(cmbMariaggeStatus.getItemAt(cmbMariaggeStatus.getSelectedIndex()));
         new_doc.setAgama(cmbReligion.getItemAt(cmbReligion.getSelectedIndex()));
-        new_doc.setStatus(KandidatStatus.MENUNGGU.getStatus());
+        new_doc.setStatus(KandidatStatus.MENUNGGU);
         
         new_doc.update();
     }
@@ -87,7 +87,7 @@ public class FormKandidat extends javax.swing.JPanel {
         new_doc.setTingkatPendidikan(cmbEducational.getItemAt(cmbEducational.getSelectedIndex()));
         new_doc.setStatusNikah(cmbMariaggeStatus.getItemAt(cmbMariaggeStatus.getSelectedIndex()));
         new_doc.setAgama(cmbReligion.getItemAt(cmbReligion.getSelectedIndex()));
-        new_doc.setStatus(KandidatStatus.MENUNGGU.getStatus());
+        new_doc.setStatus(KandidatStatus.MENUNGGU);
         
         new_doc.save();
     }

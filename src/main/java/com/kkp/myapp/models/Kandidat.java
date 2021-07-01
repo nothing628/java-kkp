@@ -1,5 +1,6 @@
 package com.kkp.myapp.models;
 
+import com.kkp.myapp.enums.KandidatStatus;
 import java.util.Date;
 import org.bson.Document;
 
@@ -138,8 +139,8 @@ public class Kandidat extends BaseModel {
         this.posisi_pengalaman = posisi_pengalaman;
     }
     
-    public void setStatus(String status_kandidat) {
-        this.status_kandidat = status_kandidat;
+    public void setStatus(KandidatStatus status_kandidat) {
+        this.status_kandidat = status_kandidat.getStatus();
     }
     
     public void setStatusNikah(String status_nikah) {

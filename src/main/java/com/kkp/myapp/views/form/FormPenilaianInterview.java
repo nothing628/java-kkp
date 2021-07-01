@@ -352,7 +352,7 @@ public class FormPenilaianInterview extends javax.swing.JFrame {
     private void messageAndClose() {
         JOptionPane.showMessageDialog(this,
                         "Berhasil menginput hasil penilaian",
-                        "Berhasil Login",
+                        "Berhasil Menyimpan",
                         JOptionPane.INFORMATION_MESSAGE);
         
         this.closeForm();

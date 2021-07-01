@@ -1,5 +1,6 @@
 package com.kkp.myapp.models;
 
+import com.kkp.myapp.enums.KandidatStatus;
 import com.mongodb.client.result.InsertOneResult;
 import org.bson.BsonValue;
 import org.bson.Document;
@@ -17,11 +18,16 @@ public class Penilaian extends BaseModelWithTimestamp {
     private int nilai_antusiasme;
     private String notes;
     private String penilai;
+    private String status;
     
     public Penilaian() {
         myCollection = DBConnector.penilaianCollection;
     }
 
+    public void setStatus(KandidatStatus status) {
+        this.status = status.getStatus();
+    }
+    
     public void setKandidatId(ObjectId kandidat_id) {
         this.kandidat_id = kandidat_id;
     }
@@ -60,6 +66,10 @@ public class Penilaian extends BaseModelWithTimestamp {
 
     public void setPenilai(String penilai) {
         this.penilai = penilai;
+    }
+    
+    public KandidatStatus getStatus() {
+        return KandidatStatus.valueOf(status);
     }
 
     public ObjectId getKandidatId() {
@@ -116,6 +126,7 @@ public class Penilaian extends BaseModelWithTimestamp {
         Document saveDocument = toDocument();
         Document requestDocument = getRequestDocument();
         
+        saveDocument.replace("status", KandidatStatus.MENUNGGU.getStatus());
         saveDocument.append("request_info", requestDocument);
 
         InsertOneResult result = this.myCollection.insertOne(saveDocument);
@@ -133,6 +144,7 @@ public class Penilaian extends BaseModelWithTimestamp {
     protected void fromDocument(Document document) {
         notes = document.getString("notes");
         penilai = document.getString("penilai");
+        status = document.getString("status");
         nilai_antusiasme = document.getInteger("nilai_antusiasme");
         nilai_keterampilan = document.getInteger("nilai_keterampilan");
         nilai_role_play = document.getInteger("nilai_roleplay");
@@ -148,6 +160,7 @@ public class Penilaian extends BaseModelWithTimestamp {
         Document new_doc = new Document();
         
         new_doc.append("notes", notes)
+                .append("status", status)
                 .append("penilai", penilai)
                 .append("nilai_antusiasme", nilai_antusiasme)
                 .append("nilai_keterampilan", nilai_keterampilan)

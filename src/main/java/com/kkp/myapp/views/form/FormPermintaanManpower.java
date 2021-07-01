@@ -282,7 +282,7 @@ public class FormPermintaanManpower extends javax.swing.JFrame {
     private void messageAndClose() {
         JOptionPane.showMessageDialog(this,
                         "Berhasil menginput data permintaan manpower",
-                        "Berhasil Login",
+                        "Berhasil Menyimpan",
                         JOptionPane.INFORMATION_MESSAGE);
         
         this.closeForm();
