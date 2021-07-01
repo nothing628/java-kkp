@@ -1,5 +1,6 @@
 package com.kkp.myapp.views.report;
 
+import com.kkp.myapp.helper.ExcelFileFilter;
 import com.kkp.myapp.helper.ReportHelper;
 import com.kkp.myapp.models.DBConnector;
 import com.kkp.myapp.models.Penilaian;
@@ -11,7 +12,13 @@ import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.text;
 import com.mongodb.client.model.TextSearchOptions;
 import com.mongodb.client.model.UnwindOptions;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.bson.Document;
@@ -30,6 +37,7 @@ public class ReportInterview extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fileDialog = new javax.swing.JFileChooser();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -39,6 +47,9 @@ public class ReportInterview extends javax.swing.JFrame {
         btnExport = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
+
+        fileDialog.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
+        fileDialog.setFileFilter(getFileFilter());
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Laporan Penilaian Kandidat");
@@ -171,7 +182,7 @@ public class ReportInterview extends javax.swing.JFrame {
         new_model.addColumn("Nilai Tanya Jawab");
         new_model.addColumn("Catatan");
         new_model.addColumn("Status");
-        
+
         this.t_model = new_model;
         this.tblData.setModel(new_model);
     }
@@ -192,7 +203,7 @@ public class ReportInterview extends javax.swing.JFrame {
             Penilaian nilai = new Penilaian();
             nilai.setId(doc.getObjectId("_id"));
             nilai.load();
-            
+
             Document kandidat = doc.get("kandidat", new Document());
             Document request_info = doc.get("request_info", new Document());
             ArrayList row = new ArrayList();
@@ -230,14 +241,76 @@ public class ReportInterview extends javax.swing.JFrame {
     }
 
     private void exportReport() {
+        File target = openAndGetFilename();
         ReportHelper helper = new ReportHelper();
 
-        helper.test();
+        helper.setHeader(new String[]{
+            "KTP",
+            "Nama Kandidat",
+            "No Telepon",
+            "Email",
+            "Posisi",
+            "Penilai",
+            "Nilai Antusiasme",
+            "Nilai Gestur",
+            "Nilai Keterampilan",
+            "Nilai Pengalaman Kerja",
+            "Nilai Role Play",
+            "Nilai Tanya Jawab",
+            "Catatan",
+            "Status",}
+        );
+
+        fillReportContent(helper);
+
+        try {
+            helper.save(target);
+            
+            showInfoMessage("Berhasil mengexport file, file berlokasi di " + target.getAbsolutePath());
+        } catch (IOException ex) {
+            showErrorMessage(ex.getMessage());
+        }
+    }
+
+    private void fillReportContent(ReportHelper report) {
+        int row_count = t_model.getRowCount();
+
+        for (int i = 0; i < row_count; i++) {
+            ArrayList<Object> row = new ArrayList<>();
+
+            for (int j = 0; j < 14; j++) {
+                row.add(t_model.getValueAt(i, j));
+            }
+
+            report.addRow(row);
+        }
+    }
+
+    private File openAndGetFilename() {
+        fileDialog.showSaveDialog(this);
+
+        File file = fileDialog.getSelectedFile();
+
+        return file;
+    }
+
+    private FileFilter getFileFilter() {
+        FileFilter filter = new ExcelFileFilter();
+
+        return filter;
     }
 
     private void clearTable() {
         DefaultTableModel t_m = (DefaultTableModel) this.t_model;
         t_m.setNumRows(0);
+    }
+    
+    private void showInfoMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Ooops, ada kesalahan", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void showErrorMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Ooops, ada kesalahan", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void main(String args[]) {
@@ -276,6 +349,7 @@ public class ReportInterview extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnExport;
+    private javax.swing.JFileChooser fileDialog;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
